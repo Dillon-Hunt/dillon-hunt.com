@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2');
+
+:root {
+    --background-primary: #1B1B1B;
+    --background-secondary: #24252B;
+    --background-primary-light: #2e2f36;
+    --background-secondary-light: #34363d;
+
+    --purple-accent-primary: hsl(258, 80%, 47%);
+    --purple-accent-secondary: hsl(258, 80%, 35%);
+
+    --header-font-primary: hsl(0, 0%, 100%); 
+    --header-font-secondary: hsl(0, 0%, 92%);
+
+    --body-font-primary: hsl(240, 26%, 87%);
+    --body-font-secondary: hsl(254, 23%, 85%);
+
+    --link-font: hsl(231, 100%, 78%);
+
+    --font-small: 16px;
+    --font-regular: 18px;
+    --font-large: 24px;
+    --font-largest: 36px;
+}
+
+body {
+  background-color: var(--background-primary);
+  color: var(--body-font-primary);
+  margin: 0;
+  font-family: 'Baloo 2';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--header-font-primary);
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

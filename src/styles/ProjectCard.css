@@ -1,0 +1,66 @@
+.ProjectCard {
+    background-color: transparent;
+
+    width: 30%;
+    min-width: 300px;
+    margin: 10px 10px 10px 0;
+    border-radius: 20px;
+    padding: 10px;
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: end;
+    text-align: center;
+    align-items: center;
+}
+
+.ProjectCard img {
+    margin-bottom: auto;
+    width: 100%;
+    max-height: 800px;
+    max-width: calc(800px * 0.75);
+    justify-self: center;
+    display: flex;
+    transition: .5s ease-in-out;
+}
+
+.ProjectCard h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--body-font-primary);
+    padding: 10px;
+    margin: 0;
+}
+
+.ProjectCard p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--body-font-secondary);
+    font-size: var(--font-small);
+    padding: 10px;
+    margin-top: -5px;
+}
+
+.ProjectCard a {
+    text-align: right;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: var(--purple-accent-primary);
+    border-radius: 5px;
+    color: var(--primary-font-100);
+    text-decoration: none;
+    width: 100%;
+    width: max-content;
+    margin: 0 auto 0 auto;
+    padding: 10px;
+    outline: none;
+    box-shadow: 2px 3px var(--purple-accent-secondary);
+}
+
+.ProjectCard a:hover {
+    box-shadow: 1px 1.5px var(--purple-accent-90);
+    transform: translateX(1.5px) translateY(1px);
+}
+
+.ProjectCard:hover img {
+    transform: translateX(.5px) translateY(-8px);
+}

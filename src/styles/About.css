@@ -1,0 +1,53 @@
+.About::before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./Avatar.png');
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    left: 0px;
+    transform: translateX(-50%);
+    /*
+    background-color: var(--secondary-background-100);
+    */
+    background-color: var(--background-primary-light);
+    border-radius: 10px;
+    position: absolute;
+}
+
+.About {
+    position: relative;
+    width: calc(70vw - 150px);
+    margin-left: 20vw;
+    margin-top: 40px;
+    background-color: var(--background-secondary);
+    border-radius: 3px;
+    padding: 20px 20px 20px 150px;
+    text-align: left;
+}
+
+.About h1 {
+    color: var(--header-font-secondary);
+    text-align: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: var(--font-large);
+    font-weight: 800;
+    margin: 0;
+}
+
+.About h2 {
+    margin: 0;
+}
+
+.About br {
+    margin-top: 10px;
+}
+
+.About p:nth-child(2) {
+    font-size: var(--font-regular);
+    color: var(--body-font-primary);
+    margin-bottom: 10px;
+    text-align: left;
+}
