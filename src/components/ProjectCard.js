@@ -1,12 +1,12 @@
 import '../styles/ProjectCard.css';
 
-function ProjectCard() {
+function ProjectCard(props) {
     return (
       <div className="ProjectCard">
-          <img src='/assets/purple-placeholder.png' />
-          <h2>Project</h2>
-          <p>Here will be a breif description of the project so you know what they are.</p>
-          <a>View Project</a>
+          <img src={props.imageUrl == "" ? '/assets/purple-placeholder.png' : props.imageUrl} />
+          <a className="animation-hover" href={props.url}>{props.name}</a>
+          <p>{props.description}</p>
+          <a href={props.blogUrl}>View Project</a>
       </div>
     );
   }

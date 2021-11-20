@@ -42,3 +42,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.animation-hover:hover::after {
+  /* Scale & Position */
+  width: 100%;
+}
+
+.animation-hover::after {
+  /* Color & Style */
+  background: rgb(254,109,123);
+  background: linear-gradient(90deg, rgba(254,109,123,1) 0%, rgba(253,176,42,1) 100%); 
+
+  /* Scale & Position */
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  content: '';
+
+  /* Animations */
+  transition: .2s ease-in-out;
+  transform: translateX(-50%);
+}
