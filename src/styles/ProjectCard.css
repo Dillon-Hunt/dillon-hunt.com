@@ -1,11 +1,11 @@
 .ProjectCard {
-    background-color: transparent;
+    background-color: var(--background-secondary);
 
     width: 30%;
     min-width: 300px;
     margin: 10px 10px 10px 0;
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 5px;
+    padding-bottom: 10px;
 
     display: flex;
     position: relative;
@@ -16,6 +16,7 @@
 }
 
 .ProjectCard img {
+    border-radius: 5px;
     margin-bottom: auto;
     width: 100%;
     max-height: 800px;
@@ -65,5 +66,5 @@
 }
 
 .ProjectCard:hover img {
-    transform: translateX(.5px) translateY(-8px);
+    transform: translateY(-8px);
 }

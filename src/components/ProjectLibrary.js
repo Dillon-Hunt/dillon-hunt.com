@@ -7,14 +7,14 @@ const projects = [
     name: "Kitchefs",
     description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
     blogUrl: "./blog/post/kitchefs",
-    imageUrl: ""
+    imageUrl: "/assets/kitchefs.png"
   },
   {
     url: "https://addons.mozilla.org/en-US/firefox/addon/new_tab/",
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
     blogUrl: "./blog/post/newtab", 
-    imageUrl: ""
+    imageUrl: "/assets/newtab.png"
   },
   {
     url: "./games/platformer/version/7/index.html",

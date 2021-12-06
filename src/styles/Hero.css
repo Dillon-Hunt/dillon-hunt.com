@@ -17,6 +17,7 @@
     font-weight: 800;
     margin: 0;
     padding-top: calc(50vh - 2em); /* 25vh for full */
+    z-index: 10;
 }
 
 .Hero h2 {
