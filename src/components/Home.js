@@ -6,12 +6,12 @@ import ProjectLibrary from './ProjectLibrary'
 function Home() {
   return (
     <div className="Home">
-        <Hero />
+        <Hero title="Hello, I am Dillon Hunt." subtitle="But if your here you probably already knew that." />
         <AboutMe />
 
         <h1>Projects</h1>
         <ProjectLibrary />
-        <img src="/assets/wave.png" />
+        <img id="wave" src="/assets/wave.png" />
     
         <footer>
             <h1>Contact Me</h1>

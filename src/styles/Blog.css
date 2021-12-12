@@ -1,0 +1,10 @@
+img {
+    width: 100vw;
+    margin: 0;
+    margin-bottom: -10px;
+    background-color: var(--background-primary);
+}
+
+#wave {
+    margin-top: 50px;
+}

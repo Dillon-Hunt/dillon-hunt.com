@@ -3,9 +3,9 @@ import '../styles/Game.css';
 import reactDom from 'react-dom';
 //import Ball from '../scripts/Ball.js';
 
-function Hero() {
+function Hero(props) {
 
-    var Hero = document.getElementsByClassName('Hero')[0];
+    document.addEventListener('scroll', scrollHandler);
 
     function fadeOutOnScroll(element) {
         if (!element) {
@@ -28,10 +28,8 @@ function Hero() {
     }
 
     function scrollHandler() {
-        fadeOutOnScroll(Hero);
+        fadeOutOnScroll(document.getElementsByClassName('Hero')[0]);
     }
-
-    window.addEventListener('scroll', scrollHandler);
 
     function getBall_x () {
         return parseFloat(getComputedStyle(document.getElementById("ball")).getPropertyValue("--x"))
@@ -75,6 +73,8 @@ function Hero() {
             reset()
             setTimeout(() => {
                 document.getElementById("computer-paddle").style.backgroundColor = "#210958"
+                document.getElementById("player-paddle").style.opacity = "0"
+                document.getElementById("computer-paddle").style.opacity = "0"
             }, 1000)
         } else if (BallRect.left <= 0) {
             startGame = false
@@ -82,6 +82,8 @@ function Hero() {
             reset()
             setTimeout(() => {
                 document.getElementById("player-paddle").style.backgroundColor = "#210958"
+                document.getElementById("player-paddle").style.opacity = "0"
+                document.getElementById("computer-paddle").style.opacity = "0"
             }, 1000)
         }
     }
@@ -131,7 +133,7 @@ function Hero() {
         setComputer_y(50)
         setPlayer_y(50)
         setBall_x(50)
-        setBall_y(50)
+        setBall_y(52)
     }
 
     let startGame = false
@@ -139,8 +141,12 @@ function Hero() {
     window.onload = () => {
         document.getElementById("ball").addEventListener("click", () => {
             startGame = true
+            document.getElementById("player-paddle").style.opacity = "1"
+            document.getElementById("computer-paddle").style.opacity = "1"
         })
     }
+
+    
 
     function update(time) {
         if (lastTime != null && startGame) {
@@ -160,8 +166,8 @@ function Hero() {
             <div className="Paddle Left" id="player-paddle"></div>
             <div className="Paddle Right" id="computer-paddle"></div>
 
-            <h1>Hello, I am Dillon Hunt.</h1>
-            <h2>But if your here you probably already knew that.</h2>
+            <h1>{props.title}</h1>
+            <h2>{props.subtitle}</h2>
         </div>
     );
   }

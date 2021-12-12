@@ -1,5 +1,5 @@
-import '../styles/ProjectLibrary.css';
-import ProjectCard from './ProjectCard'
+import '../styles/BlogLibrary.css';
+import BlogCard from './BlogCard'
 
 const projects = [
   {
@@ -43,16 +43,16 @@ const projects = [
     description: "A small but fun platformer game created with Phaser as a school project.",
     blogUrl: "./blog/000000",
     imageUrl: "/assets/platformer.png"
-  },
+  }
 ]
 
 
-function ProjectLibrary() {
+function BlogLibrary() {
   return (
-    <div className="ProjectLibrary">
+    <div className="BlogLibrary">
       {
         projects.map((project, idx) => 
-          <ProjectCard key={idx} name={project.name} description={project.description} url={project.url} blogUrl={project.blogUrl} imageUrl={project.imageUrl} />
+          <BlogCard key={idx} name={project.name} description={project.description} url={project.url} blogUrl={project.blogUrl} imageUrl={project.imageUrl} />
         )
       }
         
@@ -60,4 +60,4 @@ function ProjectLibrary() {
   );
 }
 
-export default ProjectLibrary;
+export default BlogLibrary;

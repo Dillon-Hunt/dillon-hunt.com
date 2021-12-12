@@ -1,14 +1,24 @@
-import { useParams } from "react-router-dom";
-//import '../styles/Blog.css';
+import '../styles/Blog.css';
+import Hero from './Hero'
+import BlogLibrary from './BlogLibrary'
 
 function Blog() {
-    const { id } = useParams()
     return (
       <div className="Blog">
-          <h1>Blog Post ID: {id}</h1>
+        <Hero title="Hello, I am Dillon Hunt." subtitle="You have reached my blog, scroll to view my posts." />
+        <h1>Blog Posts</h1>
+        <BlogLibrary />
+
+        <img id="wave" src="/assets/wave.png" />
+
+        <footer>
+            <h1>Contact Me</h1>
+            <p>admin@dillon-hunt.com</p>
+        </footer>
       </div>
     );
   }
   
   export default Blog;
+  
   

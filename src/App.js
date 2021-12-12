@@ -12,8 +12,8 @@ function App() {
         <Navbar />
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/blog" element={<BlogPost />} />
-            <Route exact path="/blog/:id" element={<Blog />} />
+            <Route exact path="/blog" element={<Blog />} />
+            <Route exact path="/blog/:id" element={<BlogPost />} />
           </Routes>
         </Router>
     </div>

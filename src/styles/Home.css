@@ -5,9 +5,13 @@ img {
     background-color: var(--background-primary);
 }
 
+#wave {
+    margin-top: 50px;
+}
+
 footer {
     text-align: center;
-    background-color: var(--purple-accent-primary);
+    background-color: var(--accent-primary);
     padding: 50px;
     margin-top: 0;
 }
@@ -15,13 +19,13 @@ footer {
 footer > h1 {
     font-family: 'Baloo 2';
     margin: 0;
-    color: var(--primary-font-100);
+    color: var(--font-title);
     background: none;
     -webkit-text-fill-color: var(--header-font-primary);
 }
 
 p {
-    color: var(--secondary-font-100);
+    color: var(--font-body);
     position: relative;
     margin: 0;
 }
