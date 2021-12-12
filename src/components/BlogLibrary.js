@@ -3,45 +3,45 @@ import BlogCard from './BlogCard'
 
 const projects = [
   {
-    url: "https://kitchefs.github.io/",
+    url: "https:/kitchefs.github.io/",
     name: "Kitchefs",
     description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "./blog/000101",
+    blogUrl: "./000101",
     imageUrl: "/assets/kitchefs.png"
   },
   {
-    url: "https://addons.mozilla.org/en-US/firefox/addon/new_tab/",
+    url: "https:/addons.mozilla.org/en-US/firefox/addon/new_tab/",
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
-    blogUrl: "./blog/000100", 
+    blogUrl: "./000100", 
     imageUrl: "/assets/newtab.png"
   },
   {
     url: "./games/platformer/version/7/index.html",
     name: "Platformer",
     description: "A small but fun platformer game created with Phaser as a school project.",
-    blogUrl: "./blog/000011",
+    blogUrl: "./000011",
     imageUrl: "/assets/platformer.png"
   },
   {
-    url: "https://kitchefs.github.io/",
+    url: "https:/kitchefs.github.io/",
     name: "Kitchefs",
     description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "./blog/000010",
+    blogUrl: "./000010",
     imageUrl: "/assets/kitchefs.png"
   },
   {
-    url: "https://addons.mozilla.org/en-US/firefox/addon/new_tab/",
+    url: "https:/addons.mozilla.org/en-US/firefox/addon/new_tab/",
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
-    blogUrl: "./blog/000001", 
+    blogUrl: "./000001", 
     imageUrl: "/assets/newtab.png"
   },
   {
     url: "./games/platformer/version/7/index.html",
     name: "Platformer",
     description: "A small but fun platformer game created with Phaser as a school project.",
-    blogUrl: "./blog/000000",
+    blogUrl: "./000000",
     imageUrl: "/assets/platformer.png"
   }
 ]

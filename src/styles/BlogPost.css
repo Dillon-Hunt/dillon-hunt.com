@@ -8,3 +8,14 @@ img {
 #wave {
     margin-top: 50px;
 }
+
+.BlogPost .post h2 {
+    font-size: 28px;
+}
+
+.BlogPost .post p {
+    font-size: 21px;
+    text-align: justify;
+    width: calc(60% + 50px);
+    margin-left: calc(20% - 25px);
+}

@@ -40,6 +40,10 @@ h1 {
   color: var(--font-important);
 }
 
+h2 {
+  color: var(--font-important);
+}
+
 a {
   color: var(--font-title);
   text-decoration: none;
