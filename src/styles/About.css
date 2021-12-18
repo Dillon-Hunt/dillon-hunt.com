@@ -28,6 +28,18 @@
     text-align: left;
 }
 
+@media only screen and (max-width: 900px) {
+    .About::before {
+        display: none;
+    }
+
+    .About {
+        width: calc(80vw - 40px);
+        margin-left: 10vw;
+        padding: 20px;
+    }
+}
+
 .About h1 {
     color: var(--font-title);
     text-align: left;
@@ -39,6 +51,7 @@
 
 .About h2 {
     margin: 0;
+    line-height: 1;
     color: var(--font-body);
 }
 
