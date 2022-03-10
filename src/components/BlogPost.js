@@ -30,11 +30,12 @@ var posts = [
       title: "NewTab",
       content: [
         {
-          heading: "Project Breif",
+          heading: "Project Idea",
           content: 
           <>
             <p>
-              EXAMPLE TEXT, WILL CHANGE: An free firefox addon to improve your browser experience with a customizable dashboard.
+              The idea of NewTab was to create a free web extension to allow users to have a customisable new tab page that was hard to find with similar products. 
+              The entire project is based on customisability and simplicity.
             </p>
           </>
         },
@@ -52,7 +53,7 @@ var posts = [
 ]
 
 function BlogPost() {
-    let { id } = useParams()
+    var { id } = useParams()
     id = parseInt(id)
     const content = posts.length >= id + 1 ? (
       <>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 function ProjectCard(props) {
     var [clicked, setChanged] = useState(false)
     return (
-      <div className={"ProjectCard " + (clicked ? "clicked" : "")} onClick={() => {setChanged(clicked ? false : true); console.log(clicked) }}>
+      <div className={"ProjectCard " + (clicked ? "clicked" : "")} onClick={() => {setChanged(clicked ? false : true)}}>
         <div className='card-inner'>
           <div className="card-front">
             <img src={props.imageUrl === "" ? '/assets/purple-placeholder.png' : props.imageUrl} />

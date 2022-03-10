@@ -434,7 +434,6 @@ function update ()
             playerBounce = 0
             player.setVelocityX(0)
             player.setVelocityY(0)
-            console.log('Hi')
             lives--
         }
         if (cursors.space.isDown && lives != 0) {
@@ -466,7 +465,6 @@ function update ()
     } else if (cursors.down.isDown && jetpackTime > 0 && player.y > 0) {
         player.setVelocityY(-jump/5)
         jetpackTime--
-        console.log(jetpackTime)
     }
     
     if (player.body.touching.down || player.body.touching.left || player.body.touching.right) {
