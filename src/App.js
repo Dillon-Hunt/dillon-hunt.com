@@ -11,12 +11,12 @@ function App() {
     <div className="App">
         <Router>
         <Navbar />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/blog" element={<Blog />} />
-            <Route exact path="/blog/:id" element={<BlogPost />} />
-            <Route path='*' element={<Hero title="404" subtitle="Page Not Found" />} />
-          </Routes>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/blog" element={<Blog />} />
+          <Route exact path="/blog/:id" element={<BlogPost />} />
+          <Route path='*' element={<Hero title="404" subtitle="Page Not Found" />} />
+        </Routes>
         </Router>
     </div>
   );

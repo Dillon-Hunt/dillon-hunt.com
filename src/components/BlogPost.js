@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { CodeBlock, nord } from "react-code-blocks";
+import { Helmet } from "react-helmet";
 import Hero from "./Hero"
 import '../styles/BlogPost.css';
 
 var posts = [
     {
       title: "Platformer",
+      description: "Exploring the development of an educational Phaser.js based platformer game.",
       content: [
         {
           heading: "Idea",
@@ -155,6 +157,7 @@ function hitFlag(player, flag) {
     },
     {
       title: "NewTab",
+      description: "Exploring the development of the Firefox new tab extension NewTab.",
       content: [
         {
           heading: "Project Idea",
@@ -206,6 +209,10 @@ function BlogPost() {
 
     return (
       <div className="BlogPost">
+          <Helmet>
+            <title>{posts[id].title} | Dillon Hunt</title>
+            <meta name="description" content={posts.length >= id + 1 ? posts[id].description : "404 - That's An Error"} />
+          </Helmet>
           <Hero title={posts.length >= id + 1 ? posts[id].title : "404"} subtitle={posts.length >= id + 1 ? "A Post By Dillon Hunt." : "Page Not Found"}/>
           {content}
       </div>
