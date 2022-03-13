@@ -6,56 +6,21 @@ const projects = [
     url: "https:/kitchefs.github.io/",
     name: "Kitchefs",
     description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "./000007",
+    blogUrl: "./blog/000002",
     imageUrl: "/assets/kitchefs.png"
   },
   {
     url: "https:/addons.mozilla.org/en-US/firefox/addon/new_tab/",
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
-    blogUrl: "./000006", 
-    imageUrl: "/assets/newtab.png"
-  },
-  {
-    url: "https:/kitchefs.github.io/",
-    name: "Kitchefs",
-    description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "./000005",
-    imageUrl: "/assets/kitchefs.png"
-  },
-  {
-    url: "https:/addons.mozilla.org/en-US/firefox/addon/new_tab/",
-    name: "NewTab",
-    description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
-    blogUrl: "./000004", 
+    blogUrl: "./blog/000001", 
     imageUrl: "/assets/newtab.png"
   },
   {
     url: "./games/platformer/version/7/index.html",
     name: "Platformer",
     description: "A small but fun platformer game created with Phaser as a school project.",
-    blogUrl: "./000003",
-    imageUrl: "/assets/platformer.png"
-  },
-  {
-    url: "https:/kitchefs.github.io/",
-    name: "Kitchefs",
-    description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "./000002",
-    imageUrl: "/assets/kitchefs.png"
-  },
-  {
-    url: "https:/addons.mozilla.org/en-US/firefox/addon/new_tab/",
-    name: "NewTab",
-    description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
-    blogUrl: "./000001", 
-    imageUrl: "/assets/newtab.png"
-  },
-  {
-    url: "./games/platformer/version/7/index.html",
-    name: "Platformer",
-    description: "A small but fun platformer game created with Phaser as a school project.",
-    blogUrl: "./000000",
+    blogUrl: "./blog/000000",
     imageUrl: "/assets/platformer.png"
   }
 ]

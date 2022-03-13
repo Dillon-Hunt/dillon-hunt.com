@@ -16,6 +16,56 @@ img {
 .BlogPost .post p {
     font-size: 21px;
     text-align: justify;
-    width: calc(60% + 50px);
-    margin-left: calc(20% - 25px);
+    width: calc(50% + 150px);
+    margin-left: calc(25% - 75px);
+    text-align: justify !important;
 }
+
+.BlogPost .post-image {
+    width: calc(50% + 150px);
+    padding: 0;
+    border-radius: 3px;
+}
+
+.post-image.with-code {
+    border-radius: 3px 3px 0 0;
+}
+
+.post-image.with-text {
+    margin-bottom: 5px;
+}
+
+.BlogPost .codeBlock {
+    width: calc(50% + 150px);
+    margin-left: calc(25% - 75px);
+    text-align: left !important;
+}
+
+.codeBlock.after-text {
+    margin-top: 14px;
+}
+
+/* 
+.codeBlock span {
+    background-color: #27262a !important;
+}
+
+.codeBlock .punctuation {
+    color: #fff;
+}
+
+.codeBlock .parameter {
+    color: #73b1d4;
+}
+
+.codeBlock .maybe-class-name {
+    color: #73d498;
+}
+
+.codeBlock .property-access {
+    color: #7daaff;
+}
+
+.codeBlock .boolean {
+    color: #598be9;
+} */

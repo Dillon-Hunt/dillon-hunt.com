@@ -5,7 +5,7 @@ import BlogLibrary from './BlogLibrary'
 function Blog() {
     return (
       <div className="Blog">
-        <Hero title="Hello, I am Dillon Hunt." subtitle="You have reached my blog, scroll to view my posts." />
+        <Hero title="Welcome to Dillon Hunt's Blog." subtitle="You have reached my blog, scroll to view my posts." />
         <h1>Blog Posts</h1>
         <BlogLibrary />
 
