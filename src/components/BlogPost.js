@@ -4,8 +4,8 @@ import { Helmet } from "react-helmet";
 import Hero from "./Hero"
 import '../styles/BlogPost.css';
 
-var posts = [
-    {
+var posts = {
+    "platformer-game": {
       title: "Platformer",
       description: "Exploring the development of an educational Phaser.js based platformer game.",
       content: [
@@ -155,7 +155,7 @@ function hitFlag(player, flag) {
     }
       ]
     },
-    {
+    "new-tab-page": {
       title: "NewTab",
       description: "Exploring the development of the Firefox new tab extension NewTab.",
       content: [
@@ -180,16 +180,16 @@ function hitFlag(player, flag) {
       }
       ]
     }
-]
+  }
 
 function BlogPost() {
-    var { id } = useParams()
-    id = parseInt(id)
-    const content = posts.length >= id + 1 ? (
+    var { url } = useParams()
+
+    const content = posts[url] !== undefined ?  (
       <>
 
         {
-          posts[id].content.map((post, idx) => 
+          posts[url].content.map((post, idx) => 
             <div className="post" key={idx}>
               <h2>{post.heading}</h2>
               {post.content}
@@ -210,10 +210,10 @@ function BlogPost() {
     return (
       <div className="BlogPost">
           <Helmet>
-            <title>{posts.length >= id + 1 ? posts[id].title+ " | Dillon Hunt" : "404"}</title>
-            <meta name="description" content={posts.length >= id + 1 ? posts[id].description : "404 - That's An Error"} />
+            <title>{posts[url] !== undefined ? posts[url].title + " | Dillon Hunt" : "404"}</title>
+            <meta name="description" content={posts[url] !== undefined ? posts[url].description : "404 - That's An Error"} />
           </Helmet>
-          <Hero title={posts.length >= id + 1 ? posts[id].title : "404"} subtitle={posts.length >= id + 1 ? "A Post By Dillon Hunt." : "Page Not Found"}/>
+          <Hero title={posts[url] !== undefined ? posts[url].title : "404"} subtitle={posts[url] !== undefined ? "A Post By Dillon Hunt." : "Page Not Found"}/>
           {content}
       </div>
     );
