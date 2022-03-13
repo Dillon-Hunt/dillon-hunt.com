@@ -170,11 +170,35 @@ function hitFlag(player, flag) {
           </>
         },
         {
-        heading: "Success Criteria",
+        heading: "To Be Continued",
         content:
         <>
           <p>
-            ygvbkuy <strong>bvuyftyfvkyu,</strong> gvcjytuk yfu56 yugviyuguv
+            This page is still under construction.
+          </p>
+        </>
+      }
+      ]
+    },
+    "new-cooking-website": {
+      title: "Kitchefs",
+      description: "Exploring the development of the Firefox new tab extension NewTab.",
+      content: [
+        {
+          heading: "Project Idea",
+          content: 
+          <>
+            <p>
+              Kitchefs is a free cooking website designed to make cooking easier and funner for everyone.
+            </p>
+          </>
+        },
+        {
+        heading: "To Be Continued",
+        content:
+        <>
+          <p>
+            This page is still under construction.
           </p>
         </>
       }
