@@ -210,7 +210,7 @@ function BlogPost() {
     return (
       <div className="BlogPost">
           <Helmet>
-            <title>{posts[id].title} | Dillon Hunt</title>
+            <title>{posts.length >= id + 1 ? posts[id].title+ " | Dillon Hunt" : "404"}</title>
             <meta name="description" content={posts.length >= id + 1 ? posts[id].description : "404 - That's An Error"} />
           </Helmet>
           <Hero title={posts.length >= id + 1 ? posts[id].title : "404"} subtitle={posts.length >= id + 1 ? "A Post By Dillon Hunt." : "Page Not Found"}/>
