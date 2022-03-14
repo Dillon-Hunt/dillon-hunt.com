@@ -6,25 +6,25 @@ const projects = [
     url: "https://addons.mozilla.org/en-US/firefox/addon/new_tab/",
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
-    blogUrl: "https://dillon-hunt.com/blog/new-tab-page", 
+    blogUrl: "/blog/new-tab-page", 
     imageUrl: "/assets/newtab.png",
-    imageAlt : "Firefox NewTab homepage"
+    imageAlt: "Firefox NewTab homepage"
   },
   {
     url: "./games/platformer/version/7/index.html",
     name: "Platformer",
     description: "A small but fun platformer game created with Phaser as a school project.",
-    blogUrl: "https://dillon-hunt.com/blog/platformer-game",
+    blogUrl: "/blog/platformer-game",
     imageUrl: "/assets/platformer.png",
-    imageAlt : "Screenshot from platformer game."
+    imageAlt: "Screenshot from platformer game."
   },
   {
     url: "https://kitchefs.github.io/",
     name: "Kitchefs",
     description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "https://dillon-hunt.com/blog/new-cooking-website",
+    blogUrl: "/blog/new-cooking-website",
     imageUrl: "/assets/kitchefs.png",
-    imageAlt : "Recipes home page"
+    imageAlt: "Recipes home page"
   },
 ]
 
