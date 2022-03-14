@@ -40,7 +40,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--font-body);
     font-size: var(--font-large);
-    padding: 10px;
+    padding: 10px 0;
     position: relative;
     margin: 0;
 }
@@ -50,9 +50,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--font-body);
     font-size: var(--font-large);
-    padding: 10px;
+    padding: 10px 0;
     position: relative;
     margin: 0;
+}
+
+.BlogCard a:nth-child(2)::after {
+    bottom: 8px;
 }
 
 .BlogCard p:nth-child(3) {
