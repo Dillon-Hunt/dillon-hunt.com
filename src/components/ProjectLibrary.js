@@ -3,14 +3,6 @@ import ProjectCard from './ProjectCard'
 
 const projects = [
   {
-    url: "https://kitchefs.github.io/",
-    name: "Kitchefs",
-    description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
-    blogUrl: "./blog/new-cooking-website",
-    imageUrl: "/assets/kitchefs.png",
-    imageAlt : "Recipes home page"
-  },
-  {
     url: "https://addons.mozilla.org/en-US/firefox/addon/new_tab/",
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
@@ -25,6 +17,14 @@ const projects = [
     blogUrl: "./blog/platformer-game",
     imageUrl: "/assets/platformer.png",
     imageAlt : "Screenshot from platformer game."
+  },
+  {
+    url: "https://kitchefs.github.io/",
+    name: "Kitchefs",
+    description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
+    blogUrl: "./blog/new-cooking-website",
+    imageUrl: "/assets/kitchefs.png",
+    imageAlt : "Recipes home page"
   },
 ]
 

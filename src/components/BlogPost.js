@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { CodeBlock, nord } from "react-code-blocks";
 import { Helmet } from "react-helmet";
+import SuggestedReadNext from "./SuggestedReadNext";
 import Hero from "./Hero"
 import '../styles/BlogPost.css';
 
@@ -8,7 +9,7 @@ var posts = {
     "platformer-game": {
       title: "Platformer",
       description: "Exploring the development of an educational Phaser.js based platformer game.",
-      content: [
+      contents: [
         {
           heading: "Idea",
           content: 
@@ -120,19 +121,19 @@ function hitStars (player, coin) {
         </>
       },
       {
-      heading: "Checkpoints",
-      content:
-      <>
-        <img src="../assets/platformer-checkpoint.png" alt="Player reaching a checkpoint" class="post-image with-text-below" />
-        <p>
-          A checkpoint is located at the beginning of each 'Country' represented by their respective flag. 
-          They are quite close together meaning if the player makes a mistake they won't need to redo too much of their work to get back to where they are. 
-          This aims to minimise the frustration factor of a regular platformer game. 
-          The game works with a 3 life system giving them multiple chances to reach the end but at the same time still keeping the constant threat of falling.
-        </p>
-        <div class="codeBlock after-text">
-          <CodeBlock
-            text = {
+        heading: "Checkpoints",
+        content:
+        <>
+          <img src="../assets/platformer-checkpoint.png" alt="Player reaching a checkpoint" class="post-image with-text-below" />
+          <p>
+            A checkpoint is located at the beginning of each 'Country' represented by their respective flag. 
+            They are quite close together meaning if the player makes a mistake they won't need to redo too much of their work to get back to where they are. 
+            This aims to minimise the frustration factor of a regular platformer game. 
+            The game works with a 3 life system giving them multiple chances to reach the end but at the same time still keeping the constant threat of falling.
+          </p>
+          <div class="codeBlock after-text">
+            <CodeBlock
+              text = {
 `// Player Reaches a Checkpoint
 function hitFlag(player, flag) {
     CheckpointSound.play();
@@ -143,22 +144,32 @@ function hitFlag(player, flag) {
     checkpointX = player.x + 8
     checkpointY = player.y
 }`
-            }
-            language = "javascript"
-            theme = {nord}
-            wrapLines
-            style = "width: 80%;margin-left: 10%;"
-            CodeBlock
-          />
-        </div>
-      </>
-    }
-      ]
+              }
+              language = "javascript"
+              theme = {nord}
+              wrapLines
+              style = "width: 80%;margin-left: 10%;"
+              CodeBlock
+            />
+          </div>
+        </>
+        }
+      ],
+      suggestedReadNext: {
+        url: "",
+        name: "RPG: Ideation",
+        description: "Part 1 of the development of my top down RPG game.",
+        blogUrl: "./rpg-game-devlog-part-1",
+        imageUrl: "",
+        imageAlt : "",
+        wordCount: 770,
+        date: "Mar 14, 2022"
+      },
     },
     "new-tab-page": {
       title: "NewTab",
       description: "Exploring the development of the Firefox new tab extension NewTab.",
-      content: [
+      contents: [
         {
           heading: "Project Idea",
           content: 
@@ -170,20 +181,30 @@ function hitFlag(player, flag) {
           </>
         },
         {
-        heading: "To Be Continued",
-        content:
-        <>
-          <p>
-            This page is still under construction.
-          </p>
-        </>
-      }
-      ]
+          heading: "To Be Continued",
+          content:
+          <>
+            <p>
+              This page is still under construction.
+            </p>
+          </>
+        }
+      ],
+      suggestedReadNext: {
+        url: "",
+        name: "RPG: Ideation",
+        description: "Part 1 of the development of my top down RPG game.",
+        blogUrl: "./rpg-game-devlog-part-1",
+        imageUrl: "",
+        imageAlt : "",
+        wordCount: 770,
+        date: "Mar 14, 2022"
+      },
     },
     "new-cooking-website": {
       title: "Kitchefs",
       description: "Exploring the development of the Firefox new tab extension NewTab.",
-      content: [
+      contents: [
         {
           heading: "Project Idea",
           content: 
@@ -194,15 +215,25 @@ function hitFlag(player, flag) {
           </>
         },
         {
-        heading: "To Be Continued",
-        content:
-        <>
-          <p>
-            This page is still under construction.
-          </p>
-        </>
-      }
-      ]
+          heading: "To Be Continued",
+          content:
+          <>
+            <p>
+              This page is still under construction.
+            </p>
+          </>
+        }
+      ],
+      suggestedReadNext: {
+        url: "https:/addons.mozilla.org/en-US/firefox/addon/new_tab/",
+        name: "NewTab",
+        description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
+        blogUrl: "./new-tab-page", 
+        imageUrl: "/assets/newtab.png",
+        imageAlt : "Firefox NewTab homepage",
+        wordCount: 49,
+        date: "Dec 12, 2021"
+      },
     },
     "rpg-game-devlog-part-1": {
       title: "RPG Part 1: Ideation",
@@ -315,13 +346,22 @@ function hitFlag(player, flag) {
           </>
         }
   
-      ]
+      ],
+      suggestedReadNext: {
+        url: "./games/platformer/version/7/index.html",
+        name: "Platformer",
+        description: "A small but fun platformer game created with Phaser as a school project.",
+        blogUrl: "./platformer-game",
+        imageUrl: "/assets/platformer.png",
+        imageAlt : "Screenshot from platformer game.",
+        wordCount: 502,
+        date: "Nov 20, 2021"
+      },
     }
   }
 
 function BlogPost() {
     var { url } = useParams()
-    console.log(posts[url])
     const content = posts[url] !== undefined ? (
       <>
 
@@ -334,6 +374,16 @@ function BlogPost() {
           )
         }
 
+        {
+          posts[url].suggestedReadNext !== undefined ? (
+            <>
+              <h2>What to read next?</h2>
+              <SuggestedReadNext name={posts[url].suggestedReadNext.name} description={posts[url].suggestedReadNext.description} url={posts[url].suggestedReadNext.url} blogUrl={posts[url].suggestedReadNext.blogUrl} imageUrl={posts[url].suggestedReadNext.imageUrl} imageAlt={posts[url].suggestedReadNext.imageAlt} wordCount={posts[url].suggestedReadNext.wordCount} date={posts[url].suggestedReadNext.date} />
+            </>
+          ) : 
+          (<></>)
+        }
+
         <img id="wave" src="/assets/wave.png" />
 
         <footer>
@@ -341,8 +391,7 @@ function BlogPost() {
             <p>admin@dillon-hunt.com</p>
         </footer>
       </>) :
-      (<>
-      </>)
+      (<></>)
 
     return (
       <div className="BlogPost">
