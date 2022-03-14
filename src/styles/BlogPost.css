@@ -13,12 +13,34 @@ img {
     font-size: 28px;
 }
 
+.BlogPost .post h3 {
+    color: var(--font-important);
+    margin: 0 auto;
+    font-size: calc(var(--font-regular) + 4px);
+}
+
 .BlogPost .post p {
     font-size: 21px;
     text-align: justify;
     width: calc(50% + 150px);
     margin-left: calc(25% - 75px);
     text-align: justify !important;
+}
+
+.BlogPost .post a {
+    color: var(--link-font);
+    text-decoration: none;
+    font-family: 'Baloo 2';
+}
+
+.BlogPost .post ul, .BlogPost .post ol {
+    color: var(--font-body);
+    position: relative;
+    margin: 0;
+    text-align: justify;
+    font-size: 21px;
+    width: calc(50% + 150px);
+    margin-left: calc(25% - 75px);
 }
 
 .BlogPost .post-image {
@@ -31,8 +53,28 @@ img {
     border-radius: 3px 3px 0 0;
 }
 
-.post-image.with-text {
+.post-image.with-text-below {
     margin-bottom: 5px;
+}
+
+.post-image.with-text-above {
+    margin-top: 5px;
+}
+
+.BlogPost .post h3.with-text-above {
+    margin-top: 20px;
+}
+
+.BlogPost .post .slideshow img:nth-child(1) {
+    display: none;
+}
+
+.BlogPost .post span.text-update {
+    color: #ff95c7;
+}
+
+.post-image.with-unrelated-text-above {
+    margin-top: 25px;
 }
 
 .BlogPost .codeBlock {

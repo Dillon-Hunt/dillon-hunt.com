@@ -45,6 +45,16 @@
     margin: 0;
 }
 
+.BlogCard p:nth-child(2) {
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--font-body);
+    font-size: var(--font-large);
+    padding: 10px;
+    position: relative;
+    margin: 0;
+}
+
 .BlogCard a:nth-child(4) {
     text-align: right;
     display: inline-block;
