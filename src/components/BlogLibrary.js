@@ -4,6 +4,16 @@ import BlogCard from './BlogCard'
 const projects = [
   {
     url: "",
+    name: "RPG: Design",
+    description: "Part 2 of the development of my top down RPG game.",
+    blogUrl: "/blog/rpg-game-devlog-part-2",
+    imageUrl: "",
+    imageAlt: "",
+    wordCount: 311,
+    date: "Mar 17, 2022"
+  },
+  {
+    url: "",
     name: "RPG: Ideation",
     description: "Part 1 of the development of my top down RPG game.",
     blogUrl: "/blog/rpg-game-devlog-part-1",

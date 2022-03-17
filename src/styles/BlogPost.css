@@ -87,6 +87,10 @@ img {
     margin-top: 14px;
 }
 
+.codeBlock.before-text {
+    margin-bottom: 14px;
+}
+
 /* 
 .codeBlock span {
     background-color: #27262a !important;

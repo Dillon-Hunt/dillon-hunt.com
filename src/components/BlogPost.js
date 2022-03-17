@@ -349,6 +349,129 @@ function hitFlag(player, flag) {
   
       ],
       suggestedReadNext: {
+        url: "",
+        name: "RPG: Design",
+        description: "Part 2 of the development of my top down RPG game.",
+        blogUrl: "/blog/rpg-game-devlog-part-2",
+        imageUrl: "",
+        imageAlt: "",
+        wordCount: 311,
+        date: "Mar 17, 2022"
+      },
+    },
+    "rpg-game-devlog-part-2": {
+      title: "RPG Part 2: Design & Prototype",
+      description: "Part one of the RPG devlog series. Coming up with the idea and brainstorming the mechanics and storyline.",
+      contents: [
+        {
+          heading: "Initial Design",
+          content:
+          <>
+            <img class="post-image with-text-below" src="../assets/rpg-devlog-part-2-initial-design.svg" alt="Basic initial figma design." />
+            <p>
+              Before I started making any sprites I made a quick mockup in <a href="https://www.figma.com/">Figma</a> of what I would like it to kind of look like when the tiles are added to the game.
+            </p>
+          </>
+        },
+        {
+          heading: "Creating the Tiles",
+          content:
+          <>
+            <img class="post-image with-text-below" src="../assets/rpg-devlog-part-2-initial-tilesheet.png" style={{ imageRendering: "pixelated" }} alt="Barrier, Grass and Grass Path tile designs." />
+            <p>
+              Personally I like to use <a href="https://www.adobe.com/au/products/photoshop.html">Photoshop</a> to create my tiles, however many people like to use tileset / sprite specific software like <a href="https://www.aseprite.org/">Aseprite</a>.
+              I just created the barrier, grass and grass path to start so that I can test collision and tile rendering, obviously more tiles are going to be added and they won't like like this in the final game but for testing they will do fine.
+            </p>
+          </>
+        },
+        {
+          heading: "Adding Sprites and Movement",
+          content:
+          <>
+            <img class="post-image with-text-below" src="../assets/rpg-devlog-part-2-movement.gif" alt="Demo of movement and collisions in prototype.." />
+            <p>
+              I programmed in some of the core components into the game like movement, sprite rendering and collisions. 
+              Despite choosing to use grid based movement in my ideation, I ended up adding eight directional movement to give the player more freedom.
+              This fits with the goal of the game which is that the player is in control.
+              To save time I downloaded the player sprite from <a href="https://itch.io/">itch.io</a>, to thanks to <a href="https://vryell.itch.io/tiny-adventure-pack">Vryell</a> for making that awesome sprite.
+              I will be eventually making all my own sprites but it is helpful to not spend to much time on them in the early stages of development.
+            </p>
+          </>
+        },
+        {
+          heading: "Generating Tilemap from JSON",
+          content:
+          <>
+          <div class="codeBlock after-text before-text">
+            <CodeBlock
+              text = {
+`{
+  "id": "DemoSceneOne",
+  "gameObjects": {
+      "player": {
+          "id": "player",
+          "type": "character",
+          "playerControlled": true,
+          "position": {
+              "x": 16,
+              "y": 16,
+              "facing": "down"
+          },
+          "src": "/Assets/Sprites/player-large.png"
+      }
+  },
+  "tiles": {
+      "0-0": {
+          "src": "/Assets/Tiles/barrier.png",
+          "type": "barrier",
+          "layer": "bottom"
+      },
+      "0-1": {
+          "src": "/Assets/Tiles/barrier.png",
+          "type": "barrier",
+          "layer": "bottom"
+      },
+      "0-2": {
+          "src": "/Assets/Tiles/barrier.png",
+          "type": "barrier",
+          "layer": "bottom"
+      },
+      "0-3": {
+          "src": "/Assets/Tiles/barrier.png",
+          "type": "barrier",
+          "layer": "bottom"
+      },
+      "0-4": {
+          "src": "/Assets/Tiles/barrier.png",
+          "type": "barrier",
+          "layer": "bottom"
+      },
+      "0-5": {
+          "src": "/Assets/Tiles/barrier.png",
+          "type": "barrier",
+          "layer": "bottom"
+      },
+      { ... }
+  }
+}`
+              }
+              language = "json"
+              theme = {nord}
+              wrapLines
+              style = "width: 80%;margin-left: 10%;"
+              CodeBlock
+            />
+          </div>
+          <p>
+            This is a snippet of the json data used to load the example scene above, in my next post I will be creating a world editor that exports the map into a file that looks like this.
+            You can see all the game objects are specified with an id, type, and position.
+            While there is only the player at the moment, other types of game objects could include NPCs, doors, cupboards or any other object that the player can interact with.
+            The tiles are named with the grid position and the image, tile type and layer is specified.
+          </p>
+          </>
+        },
+      ],
+      suggestedReadNext: {
         url: "./games/platformer/version/7/index.html",
         name: "Platformer",
         description: "A small but fun platformer game created with Phaser as a school project.",
