@@ -388,7 +388,9 @@ function hitFlag(player, flag) {
           heading: "Adding Sprites and Movement",
           content:
           <>
-            <img class="post-image with-text-below" src="../assets/rpg-devlog-part-2-movement.gif" alt="Demo of movement and collisions in prototype.." />
+            <video class="post-image with-text-below" loop autoPlay title="Demo of movement and collisions in prototype.">
+              <source src="../assets/rpg-devlog-part-2-movement.mp4" type="video/mp4"></source>
+            </video>
             <p>
               I programmed in some of the core components into the game like movement, sprite rendering and collisions. 
               Despite choosing to use grid based movement in my ideation, I ended up adding eight directional movement to give the player more freedom.
@@ -468,6 +470,33 @@ function hitFlag(player, flag) {
             While there is only the player at the moment, other types of game objects could include NPCs, doors, cupboards or any other object that the player can interact with.
             The tiles are named with the grid position and the image, tile type and layer is specified.
           </p>
+          </>
+        },
+        {
+          heading: "Adding Moveable Logs & Rocks",
+          content:
+          <>
+            <video class="post-image with-text-below" loop autoPlay title="Demo of player solving log puzzle.">
+              <source src="../assets/rpg-devlog-part-2-moveable-logs.mp4" type="video/mp4"></source>
+            </video>
+            <p>
+              I decided to add a puzzle element to the game.
+              The idea for these puzzles were to be relaxing while still making the player carefully consider their movements.
+              Future puzzles where it is possible to make a mistake and get stuck will have a restart puzzle button so the player can start fresh and solve the puzzle. 
+              Future puzzles might also have additional elements like switches, buttons, doors ect.
+            </p>
+          </>
+        },
+        {
+          heading: "Refinements",
+          content:
+          <>
+            <p>
+              After some iterating I chose to move back to grid based movement so that the moving log / rock puzzles could be incorporated.
+              The logs and rocks were added to the game objects part of the json.
+              The "src" item was removed from the tile as every tile with the same type had the same source anyway.
+              I removed the dots from the grass and path tiles and instead added text in the corner that details the player's x & y position.
+            </p>
           </>
         },
       ],

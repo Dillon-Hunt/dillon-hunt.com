@@ -16,7 +16,7 @@ function Home() {
 
         <h1>Projects</h1>
         <ProjectLibrary />
-        <img id="wave" src="/assets/wave.png" />
+        <img id="wave" src="/assets/wave.png" alt="" />
     
         <footer>
             <h1>Contact Me</h1>
