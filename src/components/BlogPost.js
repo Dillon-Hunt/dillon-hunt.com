@@ -356,7 +356,7 @@ function hitFlag(player, flag) {
         blogUrl: "/blog/rpg-game-devlog-part-2",
         imageUrl: "",
         imageAlt: "",
-        wordCount: 311,
+        wordCount: 465,
         date: "Mar 17, 2022"
       },
     },
