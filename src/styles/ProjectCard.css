@@ -51,7 +51,7 @@
     box-sizing: border-box;
     background-color: var(--accent-primary);
     border-radius: 3px;
-    color: var(--font-button);
+    color: var(--font-important);
     text-decoration: none;
     width: 100%;
     width: max-content;

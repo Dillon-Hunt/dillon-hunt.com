@@ -3,7 +3,7 @@ import '../styles/SuggestedReadNext.css';
 function SuggestedReadNext(props) {
     return (
       <div className="SuggestedReadNext">
-          <img src={props.imageUrl === "" ? '/assets/purple-placeholder.png' : props.imageUrl} alt={props.imageAlt === "" ? "Placeholder Image" : props.imageAlt} />
+          <img loading="lazy" src={props.imageUrl === "" ? '/assets/purple-placeholder.jpg' : props.imageUrl} alt={props.imageAlt === "" ? "Placeholder Image" : props.imageAlt} />
           <div className="SuggestedReadNext-content">
             {props.url === "" ? 
                 <h3>{props.name}</h3>

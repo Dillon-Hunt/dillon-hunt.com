@@ -7,7 +7,7 @@ const projects = [
     name: "NewTab",
     description: "An free firefox addon to improve your browser experience with a customizable dashboard.",
     blogUrl: "/blog/new-tab-page", 
-    imageUrl: "/assets/newtab.png",
+    imageUrl: "/assets/newtab.jpg",
     imageAlt: "Firefox NewTab homepage"
   },
   {
@@ -15,7 +15,7 @@ const projects = [
     name: "Platformer",
     description: "A small but fun platformer game created with Phaser as a school project.",
     blogUrl: "/blog/platformer-game",
-    imageUrl: "/assets/platformer.png",
+    imageUrl: "/assets/platformer.jpg",
     imageAlt: "Screenshot from platformer game."
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     name: "Kitchefs",
     description: "An online cooking website for quality free baking recipes with no ads or disruptions.",
     blogUrl: "/blog/new-cooking-website",
-    imageUrl: "/assets/kitchefs.png",
+    imageUrl: "/assets/kitchefs.jpg",
     imageAlt: "Recipes home page"
   },
 ]
