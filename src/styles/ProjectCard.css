@@ -42,7 +42,9 @@
     color: var(--font-body);
     font-size: var(--font-large);
     padding: 10px;
-    position: initial;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .ProjectCard a:nth-child(3) {

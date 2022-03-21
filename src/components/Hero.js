@@ -5,6 +5,7 @@ import reactDom from 'react-dom';
 
 function Hero(props) {
 
+    // Optimize
     document.addEventListener('scroll', scrollHandler);
 
     function fadeOutOnScroll(element) {
