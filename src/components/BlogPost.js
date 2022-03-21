@@ -247,6 +247,7 @@ function hitFlag(player, flag) {
               The idea for the game is to make a top down style rpg game.
               It is going to be built using javascript and canvas.
               I am not yet sure about the art style or storyline however I want it to have combat mechanics like a dungeon crawler where you equipt a weapon and need to fight enemies to progress.
+              The game is loosely based on the Pizza Legends tutorial series by <a href="https://www.youtube.com/c/DrewConley/">Drew Conley</a>, so thanks to him for that awesome tutorial.
             </p>
           </>
         },
