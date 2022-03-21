@@ -5,6 +5,10 @@ img {
     background-color: var(--background-primary);
 }
 
+h2 {
+    font-size: 2em;
+}
+
 #wave {
     margin-top: 50px;
 }

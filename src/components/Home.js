@@ -14,12 +14,12 @@ function Home() {
         <Hero title="Hello, I am Dillon Hunt." subtitle="But if your here you probably already knew that." />
         <AboutMe />
 
-        <h1>Projects</h1>
+        <h2 className="projects">Projects</h2>
         <ProjectLibrary />
         <img id="wave" src="/assets/wave.png" alt="" />
     
         <footer>
-            <h1>Contact Me</h1>
+            <h2>Contact Me</h2>
             <p>admin@dillon-hunt.com</p>
         </footer>
     </div>

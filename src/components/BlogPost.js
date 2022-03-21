@@ -541,7 +541,7 @@ function BlogPost() {
         <img id="wave" src="/assets/wave.png" />
 
         <footer>
-            <h1>Contact Me</h1>
+            <h2>Contact Me</h2>
             <p>admin@dillon-hunt.com</p>
         </footer>
       </>) :

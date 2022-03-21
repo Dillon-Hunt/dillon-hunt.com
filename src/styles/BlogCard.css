@@ -44,19 +44,11 @@
     padding: 10px 0;
 }
 
-.BlogCard a:nth-child(1) {
-    text-decoration: none;
+.BlogCard h3:nth-child(1) {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--font-body);
     font-size: var(--font-large);
-    position: relative;
-    margin: 0;
-}
-
-.BlogCard p:nth-child(1) {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: var(--font-body);
-    font-size: var(--font-large);
+    font-weight: 500;
     padding: 0;
     position: relative;
     margin: 0;
@@ -92,7 +84,7 @@
     box-sizing: border-box;
     background-color: var(--accent-primary);
     border-radius: 3px;
-    color: var(--font-button);
+    color: var(--font-important);
     text-decoration: none;
     width: 100%;
     width: max-content;

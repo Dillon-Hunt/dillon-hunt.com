@@ -45,18 +45,10 @@
     padding: 10px 0;
 }
 
-.SuggestedReadNext a:nth-child(1) {
-    text-decoration: none;
+.SuggestedReadNext h3:nth-child(1) {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var(--font-body);
-    font-size: var(--font-large);
-    position: relative;
-    margin: 0;
-}
-
-.SuggestedReadNext p:nth-child(1) {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: var(--font-body);
+    font-weight: 500;
     font-size: var(--font-large);
     padding: 0;
     position: relative;
@@ -93,7 +85,7 @@
     box-sizing: border-box;
     background-color: var(--accent-primary);
     border-radius: 3px;
-    color: var(--font-button);
+    color: var(--font-important);
     text-decoration: none;
     width: 100%;
     width: max-content;

@@ -3,8 +3,8 @@ import '../styles/About.css';
 function About() {
     return (
         <div className="About">
-            <h1>About Me</h1>
-            <h2>Here Is A Small Overview Of Me</h2>
+            <h2>About Me</h2>
+            <h3>Here Is A Small Overview Of Me</h3>
             <p>
                 My name is Dillon Hunt, I am high-school student and I love programming. 
                 I reside on the Sunshine Coast, Australia.
