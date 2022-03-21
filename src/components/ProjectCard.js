@@ -7,7 +7,7 @@ function ProjectCard(props) {
       <div className={"ProjectCard " + (clicked ? "clicked" : "")} onClick={() => {setChanged(clicked ? false : true)}}>
         <div className='card-inner'>
           <div className="card-front">
-            <img loading="lazy" src={props.imageUrl === "" ? '/assets/purple-placeholder.jpg' : props.imageUrl} alt={props.imageAlt === "" ? "Placeholder Image" : props.imageAlt} />
+            <img loading="lazy" src={props.imageUrl === "" ? '/assets/purple-placeholder.webp' : props.imageUrl} alt={props.imageAlt === "" ? "Placeholder Image" : props.imageAlt} />
           </div>
           <div className="card-back">
             <a className="animation-hover" href={props.url}>{props.name}</a>
