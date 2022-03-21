@@ -18,7 +18,8 @@
 }
 
 .SuggestedReadNext img {
-    width: calc(40vw - 70px);
+    max-width: calc(20vw + 100px);
+    min-width: calc(20vw + 100px);
     height: 100%;
     margin: 0;
     border-radius: 5px;
@@ -109,17 +110,23 @@
     transform: scale(1.005);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 880px) {
     .SuggestedReadNext {
         flex-direction: column;
         height: 400px;
     }
 
     .SuggestedReadNext img {
+        max-width: 100%;
+        min-width: auto;
         width: 100%;
     }
 
     .SuggestedReadNext-content {
         margin-top: 10px;
+    }
+
+    .SuggestedReadNext p:nth-child(4) {
+        margin-top: 1.5em;
     }
 }
