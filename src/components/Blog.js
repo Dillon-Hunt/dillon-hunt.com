@@ -14,7 +14,7 @@ function Blog() {
         <h2>Blog Posts</h2>
         <BlogLibrary />
 
-        <img id="wave" src="/assets/wave.png" />
+        <img id="wave" src="/assets/wave.png" alt="" />
 
         <footer>
             <h2>Contact Me</h2>

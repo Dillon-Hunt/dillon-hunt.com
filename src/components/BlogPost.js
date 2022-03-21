@@ -538,7 +538,7 @@ function BlogPost() {
           (<></>)
         }
 
-        <img id="wave" src="/assets/wave.png" />
+        <img id="wave" src="/assets/wave.png" alt="" />
 
         <footer>
             <h2>Contact Me</h2>

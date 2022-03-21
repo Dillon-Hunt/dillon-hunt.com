@@ -3,7 +3,7 @@ import '../styles/BlogCard.css';
 function BlogCard(props) {
     return (
       <div className="BlogCard">
-          <img loading="lazy" src={props.imageUrl == "" ? '/assets/purple-placeholder.jpg' : props.imageUrl} alt={props.imageAlt === "" ? "Placeholder Image" : props.imageAlt} />
+          <img loading="lazy" src={props.imageUrl == "" ? '/assets/purple-placeholder.webp' : props.imageUrl} alt={props.imageAlt === "" ? "Placeholder Image" : props.imageAlt} />
           <div className="BlogCard-content">
             {props.url == "" ? 
               <h3>{props.name}</h3>
