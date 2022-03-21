@@ -32,3 +32,9 @@
 .Paddle.Right {
     right: 1vw;
 }
+
+@media screen and (max-width: 512px) {
+    .Ball {
+        display: none;
+    }
+}
