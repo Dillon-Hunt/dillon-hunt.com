@@ -8,7 +8,7 @@ function BlogCard(props) {
             {props.url == "" ? 
               <h3>{props.name}</h3>
             :
-              <a className="animation-hover" href={props.url}><h3>{props.name}</h3></a>
+              <a href={props.url}><h3 className="animation-hover">{props.name}</h3></a>
             }
             <p>{props.date}</p>
             <p>{props.wordCount < 300 ? 1 : Math.round(props.wordCount / 300)} Min Read</p>

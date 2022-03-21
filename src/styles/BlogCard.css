@@ -52,6 +52,7 @@
     padding: 0;
     position: relative;
     margin: 0;
+    width: fit-content;
 }
 
 .BlogCard p:nth-child(2) {

@@ -53,6 +53,11 @@
     padding: 0;
     position: relative;
     margin: 0;
+    width: fit-content;
+}
+
+.SuggestedReadNext a:nth-child(1)::after {
+    bottom: 8px;
 }
 
 .SuggestedReadNext p:nth-child(2) {
