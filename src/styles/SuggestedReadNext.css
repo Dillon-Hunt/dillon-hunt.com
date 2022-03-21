@@ -69,6 +69,7 @@
     font-size: calc(var(--font-small) - 2px);
     top: calc(1em + 10px);
     left: 20px;
+    color: #b5b5b5;
 }
 
 .SuggestedReadNext p:nth-child(3) {
@@ -78,6 +79,7 @@
     top: calc(1em + 10px);
     right: 20px;
     text-align: right;
+    color: #b5b5b5;
 }
 
 .SuggestedReadNext p:nth-child(4) {
@@ -108,4 +110,19 @@
 
 .SuggestedReadNext:hover {
     transform: scale(1.005);
+}
+
+@media screen and (max-width: 500px) {
+    .SuggestedReadNext {
+        flex-direction: column;
+        height: 400px;
+    }
+
+    .SuggestedReadNext img {
+        width: 100%;
+    }
+
+    .SuggestedReadNext-content {
+        margin-top: 10px;
+    }
 }

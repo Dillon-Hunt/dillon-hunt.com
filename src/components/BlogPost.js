@@ -237,7 +237,7 @@ function hitFlag(player, flag) {
     },
     "rpg-game-devlog-part-1": {
       title: "RPG Part 1: Ideation",
-      description: "Part one of the RPG devlog series. Coming up with the idea and brainstorming the mechanics and storyline.",
+      description: "Part 2 of the RPG devlog series. Coming up with the idea and brainstorming the mechanics and storyline.",
       contents: [
         {
           heading: "Concept",
