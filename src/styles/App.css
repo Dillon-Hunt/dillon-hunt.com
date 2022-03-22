@@ -1,6 +1,9 @@
+body {
+  overflow-x: clip;
+}
+
 .App {
   text-align: center;
-  overflow-x: hidden;
 }
 
 img {
