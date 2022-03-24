@@ -167,8 +167,10 @@ function Hero(props) {
             <h1>{props.title}</h1>
             <h2>{props.subtitle}</h2>
 
-            <p className="scroll">Scroll Down</p>
+            <a className="scroll" href="#scroll-anchor">Scroll Down</a>
             <div className="scroll-down"></div>
+
+            <div className="scroll-anchor" id="scroll-anchor"></div>
         </div>
     );
   }

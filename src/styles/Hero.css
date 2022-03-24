@@ -30,6 +30,7 @@
 }
 
 .scroll {
+    color: var(--font-important);
     position: absolute;
     font-size: 1.3em;
     font-family: 'Baloo 2', sans-serif;
@@ -53,6 +54,12 @@
   border-right: 2px solid #fff;
   transform: translateX(-50%) rotate(45deg);
   animation: fade_move_down 3s ease-in-out infinite;
+}
+
+.scroll-anchor {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
 }
 
 @keyframes fade_move_down {
