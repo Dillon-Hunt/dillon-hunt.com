@@ -65,7 +65,7 @@
     position: absolute;
     color: var(--font-important);
     font-size: calc(var(--font-small) - 2px);
-    top: calc(1em + 10px);
+    top: 1em;
     left: 20px;
     color: #b5b5b5;
 }
@@ -74,7 +74,7 @@
     position: absolute;
     color: var(--font-important);
     font-size: calc(var(--font-small) - 2px);
-    top: calc(1em + 10px);
+    top: 1em;
     right: 20px;
     text-align: right;
     color: #b5b5b5;
@@ -83,6 +83,7 @@
 .SuggestedReadNext p:nth-child(4) {
     height: 60px;
     margin-top: 1em;
+    margin-bottom: 0;
 }
 
 .SuggestedReadNext a:nth-child(5) {

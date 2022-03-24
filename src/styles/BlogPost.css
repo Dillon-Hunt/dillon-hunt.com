@@ -25,6 +25,7 @@ img {
     width: calc(50% + 150px);
     margin-left: calc(25% - 75px);
     text-align: justify !important;
+    color: var(--font-body);
 }
 
 .BlogPost .post a {

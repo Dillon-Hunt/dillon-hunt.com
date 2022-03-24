@@ -1,11 +1,8 @@
 import '../styles/Hero.css';
 import '../styles/Game.css';
-import reactDom from 'react-dom';
-//import Ball from '../scripts/Ball.js';
 
 function Hero(props) {
 
-    // Optimize
     document.addEventListener('scroll', scrollHandler);
 
     function fadeOutOnScroll(element) {
@@ -97,9 +94,9 @@ function Hero(props) {
     }
     let velocity = 0.015
 
-    function getPlayer_y() {
+    /* function getPlayer_y() {
         return parseFloat(getComputedStyle(document.getElementById("player-paddle")).getPropertyValue("--position"))
-    }   
+    }  */  
 
     function setPlayer_y (value) {
         document.getElementById("player-paddle").style.setProperty("--position", value)

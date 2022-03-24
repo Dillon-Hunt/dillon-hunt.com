@@ -5,6 +5,11 @@ import SuggestedReadNext from "./SuggestedReadNext";
 import Hero from "./Hero"
 import '../styles/BlogPost.css';
 
+const codeBlockStyle = {
+  width: "80%",
+  marginLeft: "10%"
+}
+
 var posts = {
     "platformer-game": {
       title: "Platformer",
@@ -114,7 +119,7 @@ function hitStars (player, coin) {
               language = "javascript"
               theme = {nord}
               wrapLines
-              style = "width: 80%;margin-left: 10%;"
+              style = {codeBlockStyle}
               CodeBlock
             />
           </div>
@@ -148,7 +153,7 @@ function hitFlag(player, flag) {
               language = "javascript"
               theme = {nord}
               wrapLines
-              style = "width: 80%;margin-left: 10%;"
+              style = {codeBlockStyle}
               CodeBlock
             />
           </div>
@@ -461,7 +466,7 @@ function hitFlag(player, flag) {
               language = "json"
               theme = {nord}
               wrapLines
-              style = "width: 80%;margin-left: 10%;"
+              style = {codeBlockStyle}
               CodeBlock
             />
           </div>
