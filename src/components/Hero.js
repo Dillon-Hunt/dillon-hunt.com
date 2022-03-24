@@ -166,6 +166,9 @@ function Hero(props) {
 
             <h1>{props.title}</h1>
             <h2>{props.subtitle}</h2>
+
+            <p className="scroll">Scroll Down</p>
+            <div className="scroll-down"></div>
         </div>
     );
   }
