@@ -40,7 +40,7 @@ var posts = {
           heading: "Story",
           content:
           <>
-            <img src="../assets/platformer-story.png" alt="Player character standing between buildings" class="post-image with-text-below" />
+            <img src="../assets/platformer-story.png" alt="Player character standing between buildings" className="post-image with-text-below" />
             <p>
               The player is exploring the world we live in by passing through different countries and visiting famous landmarks along the way. 
               As the player progresses the game becomes harder creating stress so that the player feels a greater sense of achievement when they complete the game.
@@ -51,7 +51,7 @@ var posts = {
           heading: "Learning Objective",
           content:
           <>
-            <img src="../assets/platformer-learning.png" alt="Country flag after checkpoint flag" class="post-image with-text-below" />
+            <img src="../assets/platformer-learning.png" alt="Country flag after checkpoint flag" className="post-image with-text-below" />
             <p>
             This game aims to teach the lower primary group about the countries, flags and landmarks of the world through a fun and interactive platformer game. 
             The game also helps to develop their patience and ability to cope with stress in a fun and engaging environment.
@@ -71,7 +71,7 @@ var posts = {
           heading: "Enemy",
           content:
           <>
-            <img src="../assets/platformer-enemy.png" alt="Spikes for the player to avoid" class="post-image with-text-below" />
+            <img src="../assets/platformer-enemy.png" alt="Spikes for the player to avoid" className="post-image with-text-below" />
             <p>
               Instead of a traditional moving enemy, I chose to simply add in some challenges like spikes and tough jumps to put pressure on the player and keep them engaged with the game as it gives them the sense that they have reached a point and can't give up.
             </p>
@@ -102,8 +102,8 @@ var posts = {
         heading: "Collecting Coins",
         content:
         <>
-          <img src="../assets/platformer-coin.png" alt="Player with a coin" class="post-image with-code" />
-          <div class="codeBlock">
+          <img src="../assets/platformer-coin.png" alt="Player with a coin" className="post-image with-code" />
+          <div className="codeBlock">
             <CodeBlock
               text = {
 `// Player Collects a Coin
@@ -129,14 +129,14 @@ function hitStars (player, coin) {
         heading: "Checkpoints",
         content:
         <>
-          <img src="../assets/platformer-checkpoint.png" alt="Player reaching a checkpoint" class="post-image with-text-below" />
+          <img src="../assets/platformer-checkpoint.png" alt="Player reaching a checkpoint" className="post-image with-text-below" />
           <p>
             A checkpoint is located at the beginning of each 'Country' represented by their respective flag. 
             They are quite close together meaning if the player makes a mistake they won't need to redo too much of their work to get back to where they are. 
             This aims to minimise the frustration factor of a regular platformer game. 
             The game works with a 3 life system giving them multiple chances to reach the end but at the same time still keeping the constant threat of falling.
           </p>
-          <div class="codeBlock after-text">
+          <div className="codeBlock after-text">
             <CodeBlock
               text = {
 `// Player Reaches a Checkpoint
@@ -280,15 +280,15 @@ function hitFlag(player, flag) {
             <p>
               In order to develop an idea, I like to browse other similar projects and draw ideas from them, thinking about what features I could use in my game or could improve on, as well as what elements to avoid.
             </p>
-            <img class="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-littlewood.jpg" alt="Screenshot from Littlewood." />
+            <img className="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-littlewood.jpg" alt="Screenshot from Littlewood." />
             <h3>Littlewood</h3>
             <p>
               I quite liked the very simple and flat game art from <a href="https://store.steampowered.com/app/894940/Littlewood/">Littlewood</a>, although the speech popup was way too obtrusive.
               While the style might be a little too simple for the game I want to create, a tile based demo version could be useful to cut down the initial development time.
             </p>
-            <div class="slideshow">
-              <img class="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-spindle.gif" alt="Screenshot from Spindle." />
-              <img class="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-spindle-2.gif" alt="Screenshot from Spindle." />
+            <div className="slideshow">
+              <img className="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-spindle.gif" alt="Screenshot from Spindle." />
+              <img className="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-spindle-2.gif" alt="Screenshot from Spindle." />
             </div>
             <h3>Spindle</h3>
             <p>
@@ -296,13 +296,13 @@ function hitFlag(player, flag) {
               I also like the attention to detail of the footprints in the snow.
               I also think that having a mechanic to be able to chop down some trees could provide opportunity to unlock secrets, perhaps even having some trees require a particular tool to be cut.
             </p>
-            <img class="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-moonlighter.jpg" alt="Screenshot from Moonlighter." />
+            <img className="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-moonlighter.jpg" alt="Screenshot from Moonlighter." />
             <h3>Moonlighter</h3>
             <p>
               While the art from <a href="https://store.steampowered.com/app/606150/Moonlighter/">Moonlighter</a> is pretty good, I especially liked it's crafting and inventory system. 
               I would like to implement some sort of crafting or upgrade system similar to this for tools and other items.
             </p>
-            <img class="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-garden-story.png" alt="Screenshot from Garden Story." />
+            <img className="post-image with-unrelated-text-above" src="../assets/rpg-devlog-part-1-garden-story.png" alt="Screenshot from Garden Story." />
             <h3>Garden Story</h3>
             <p>
               I was interested in the flat, colorful art implemented in <a href="https://store.steampowered.com/app/1062140/Garden_Story/">Garden Story</a>. 
@@ -331,9 +331,9 @@ function hitFlag(player, flag) {
           <>
             <p>
               This section will be updated as the game is developed to reflect the complete storyline.
-              <span class="text-update"> Any additionally added story will look like this.</span>
+              <span className="text-update"> Any additionally added story will look like this.</span>
             </p>
-            <h3 class="with-text-above">Main Story</h3>
+            <h3 className="with-text-above">Main Story</h3>
             <p>
               The player's plane crashes in a dense forest, luckily there is a small campground nearby.
               In the campground you one of the campers give you a map to the nearest town.
@@ -343,7 +343,7 @@ function hitFlag(player, flag) {
               You find that the mayor of the town has plans to have it demolished to build a mine.
               Can you team up with the people you meet to find proof of the plans before it's too late.
             </p>
-            <h3 class="with-text-above">Side Stories, Missions & mechanics</h3>
+            <h3 className="with-text-above">Side Stories, Missions & mechanics</h3>
             <p>
               There will be an ability to go fishing in lakes and ponds. The fish you collect can be eaten or traded with the fisherman for items.
               <br /><br />
@@ -373,7 +373,7 @@ function hitFlag(player, flag) {
           heading: "Initial Design",
           content:
           <>
-            <img class="post-image with-text-below" src="../assets/rpg-devlog-part-2-initial-design.svg" alt="Basic initial figma design." />
+            <img className="post-image with-text-below" src="../assets/rpg-devlog-part-2-initial-design.svg" alt="Basic initial figma design." />
             <p>
               Before I started making any sprites I made a quick mockup in <a href="https://www.figma.com/">Figma</a> of what I would like it to kind of look like when the tiles are added to the game.
             </p>
@@ -383,7 +383,7 @@ function hitFlag(player, flag) {
           heading: "Creating the Tiles",
           content:
           <>
-            <img class="post-image with-text-below" src="../assets/rpg-devlog-part-2-initial-tilesheet.png" style={{ imageRendering: "pixelated" }} alt="Barrier, Grass and Grass Path tile designs." />
+            <img className="post-image with-text-below" src="../assets/rpg-devlog-part-2-initial-tilesheet.png" style={{ imageRendering: "pixelated" }} alt="Barrier, Grass and Grass Path tile designs." />
             <p>
               Personally I like to use <a href="https://www.adobe.com/au/products/photoshop.html">Photoshop</a> to create my tiles, however many people like to use tileset / sprite specific software like <a href="https://www.aseprite.org/">Aseprite</a>.
               I just created the barrier, grass and grass path to start so that I can test collision and tile rendering, obviously more tiles are going to be added and they won't like like this in the final game but for testing they will do fine.
@@ -394,7 +394,7 @@ function hitFlag(player, flag) {
           heading: "Adding Sprites and Movement",
           content:
           <>
-            <video class="post-image with-text-below" loop autoPlay title="Demo of movement and collisions in prototype.">
+            <video className="post-image with-text-below" loop autoPlay title="Demo of movement and collisions in prototype.">
               <source src="../assets/rpg-devlog-part-2-movement.mp4" type="video/mp4"></source>
             </video>
             <p>
@@ -410,7 +410,7 @@ function hitFlag(player, flag) {
           heading: "Generating Tilemap from JSON",
           content:
           <>
-          <div class="codeBlock after-text before-text">
+          <div className="codeBlock after-text before-text">
             <CodeBlock
               text = {
 `{
@@ -482,7 +482,7 @@ function hitFlag(player, flag) {
           heading: "Adding Moveable Logs & Rocks",
           content:
           <>
-            <video class="post-image with-text-below" loop autoPlay title="Demo of player solving log puzzle.">
+            <video className="post-image with-text-below" loop autoPlay title="Demo of player solving log puzzle.">
               <source src="../assets/rpg-devlog-part-2-moveable-logs.mp4" type="video/mp4"></source>
             </video>
             <p>
@@ -516,6 +516,73 @@ function hitFlag(player, flag) {
         wordCount: 502,
         date: "Nov 20, 2021"
       },
+    },
+    "social-media-design-phase": {
+      title: "Social Media App: Design",
+      description: "I discuss the design process of my social media application.",
+      contents: [
+        {
+          heading: "Idea",
+          content:
+          <>
+            <p>
+              The idea of creating the social media platform was that I wasn't happy with any existing solution.
+              Every social media platform was missing something that I wanted, 
+              so I decided to create a brand new platform that isn't controlled by advertisers or disrespect user privacy.
+            </p>
+          </>
+        },
+        {
+          heading: "Requirements",
+          content:
+          <>
+            <ul>
+              <li>Ability to create an account and personalise your profile.</li>
+              <li>Ability to post and stories containing both images and text.</li>
+              <li>Ability to create and moderate Communities like that of Reddit that allow members to post to a community and connect with like-minded people.</li>
+              <li>Ability to send and receive messages from mutual friends.</li>
+              <li>Ability to comment like and share posts and stories.</li>
+            </ul>
+          </>
+        },
+        {
+          heading: "Mobile Page Designs 1",
+          content:
+          <>
+            <img className="post-image with-text-below" src="../assets/SocialMediaApp/Home.png" alt="Figma design of first 4 pages." />
+            <h3>Home, Profile & Story Page Designs</h3>
+            <p>
+              A dark grey colour scheme was chosen with a light green highlight.
+              A light theme was also designed but this post will focus on the dark theme.
+              The layout was loosely based on that of Instagram, however I believe the design is much cleaner and looks significantly better.
+              I went for rounded corners with a radius of 10px and a frosted glass overlay with a background blur of 4px.
+              The designs above will probably change significantly in the future but they are the original concept designs.
+            </p>
+          </>
+        },
+        {
+          heading: "Mobile Page Designs 2",
+          content:
+          <>
+            <img className="post-image with-text-below" src="../assets/SocialMediaApp/Search.png" alt="Figma design of second 4 pages." />
+            <h3>Search, Results, Community & Post Page Designs</h3>
+            <p>
+              The search page opens with a view of popular / suggested communities as well a tab for potential contacts.
+              After searching a new tab bar appears allowing you to search from your friends posts, 
+              public communities as well as find peoples profiles.
+              The posting feature allows the user to add multiple images, text content, tags and a location. 
+              More pages will be added later for messaging, adding friends, managing settings, viewing notifications and more.
+            </p>
+          </>
+        },
+        {
+          heading: "Desktop Page Designs 1",
+          content:
+          <>
+            <p>More Content To Come.</p>
+          </>
+        },
+      ]
     }
   }
 
