@@ -9,7 +9,7 @@ const projects = [
     blogUrl: "/blog/social-media-design-phase",
     imageUrl: "/assets/SocialMediaApp/Profile Page | Desktop.png",
     imageAlt: "",
-    wordCount: 10000000,
+    wordCount: 580,
     date: "Jun 8, 2022"
   },
   {
