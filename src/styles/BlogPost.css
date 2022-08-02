@@ -92,27 +92,7 @@ img {
     margin-bottom: 14px;
 }
 
-/* 
-.codeBlock span {
-    background-color: #27262a !important;
+.gist {
+    margin-left: calc(25% - 85px);
+    width: calc(50% + 170px);
 }
-
-.codeBlock .punctuation {
-    color: #fff;
-}
-
-.codeBlock .parameter {
-    color: #73b1d4;
-}
-
-.codeBlock .maybe-class-name {
-    color: #73d498;
-}
-
-.codeBlock .property-access {
-    color: #7daaff;
-}
-
-.codeBlock .boolean {
-    color: #598be9;
-} */

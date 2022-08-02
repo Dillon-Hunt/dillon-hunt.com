@@ -1,3 +1,12 @@
+.App__Loading {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: 'Baloo 2', sans-serif;
+  color: #fff;
+}
+
 html {
   scroll-behavior: smooth;
 }

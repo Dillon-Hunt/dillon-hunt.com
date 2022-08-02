@@ -2,7 +2,7 @@ import '../styles/About.css';
 
 function About() {
     return (
-        <div className="About">
+        <div className='About'>
             <h2>About Me</h2>
             <h3>Here Is A Small Overview Of Me</h3>
             <p>

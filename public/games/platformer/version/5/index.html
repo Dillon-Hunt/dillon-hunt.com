@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./phaser.js"></script>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='./phaser.js'></script>
     <title>Dillon Hunt | Platformer Game | Version 5</title>
     
     <!-- ---------------- Proof That Google Is Always Watching ----------------- -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFPKPKJLK4"></script>
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-NFPKPKJLK4'></script>
 
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -514,7 +514,7 @@ function hitSpikes (player, spike) {
 
 function hitStars (player, star) {
     name = star.texture.key
-    coinValue = name.replace("coin-", "")
+    coinValue = name.replace('coin-', '')
     score += parseInt(coinValue)
     star.disableBody(true, true);
     setScore()
@@ -522,13 +522,13 @@ function hitStars (player, star) {
 
 function collectPowerup(player, powerup) {
     name = powerup.texture.key
-    if (name == "grow") {
+    if (name == 'grow') {
         playerSize = 1.5
-    } else if (name == "shrink") {
+    } else if (name == 'shrink') {
         playerSize = .75
-    } else if (name == "speed") {
+    } else if (name == 'speed') {
         speed = 120
-    } else if (name == "life") {
+    } else if (name == 'life') {
         if (lives != 3) {
             lives++
         }

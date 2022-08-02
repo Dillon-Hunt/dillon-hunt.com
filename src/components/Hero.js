@@ -30,19 +30,19 @@ function Hero(props) {
     }
 
     function getBall_x () {
-        return parseFloat(getComputedStyle(document.getElementById("ball")).getPropertyValue("--x"))
+        return parseFloat(getComputedStyle(document.getElementById('ball')).getPropertyValue('--x'))
     }
     
     function setBall_x (value) {
-        document.getElementById("ball").style.setProperty("--x", value)
+        document.getElementById('ball').style.setProperty('--x', value)
     }
 
     function getBall_y () {
-        return parseFloat(getComputedStyle(document.getElementById("ball")).getPropertyValue("--y"))
+        return parseFloat(getComputedStyle(document.getElementById('ball')).getPropertyValue('--y'))
     }
     
     function setBall_y (value) {
-        document.getElementById("ball").style.setProperty("--y", value)
+        document.getElementById('ball').style.setProperty('--y', value)
     }
 
     function isCollision(rect1, rect2) {
@@ -53,9 +53,9 @@ function Hero(props) {
         setBall_x(getBall_x() + (direction.x * velocity * delta))
         setBall_y(getBall_y() + (direction.y * velocity * delta))
         velocity += 0.000001 * delta
-        const BallRect = document.getElementById("ball").getBoundingClientRect()
-        const PlayerRect = document.getElementById("player-paddle").getBoundingClientRect()
-        const ComputerRect = document.getElementById("computer-paddle").getBoundingClientRect()
+        const BallRect = document.getElementById('ball').getBoundingClientRect()
+        const PlayerRect = document.getElementById('player-paddle').getBoundingClientRect()
+        const ComputerRect = document.getElementById('computer-paddle').getBoundingClientRect()
 
         if (BallRect.bottom >= window.innerHeight || BallRect.top <= 0) {
             direction.y  *= -1
@@ -67,21 +67,21 @@ function Hero(props) {
 
         if (BallRect.right >= window.innerWidth) {
             startGame = false
-            document.getElementById("computer-paddle").style.backgroundColor = "#bb3d55"
+            document.getElementById('computer-paddle').style.backgroundColor = '#bb3d55'
             reset()
             setTimeout(() => {
-                document.getElementById("computer-paddle").style.backgroundColor = "#210958"
-                document.getElementById("player-paddle").style.opacity = "0"
-                document.getElementById("computer-paddle").style.opacity = "0"
+                document.getElementById('computer-paddle').style.backgroundColor = '#210958'
+                document.getElementById('player-paddle').style.opacity = '0'
+                document.getElementById('computer-paddle').style.opacity = '0'
             }, 1000)
         } else if (BallRect.left <= 0) {
             startGame = false
-            document.getElementById("player-paddle").style.backgroundColor = "#bb3d55"
+            document.getElementById('player-paddle').style.backgroundColor = '#bb3d55'
             reset()
             setTimeout(() => {
-                document.getElementById("player-paddle").style.backgroundColor = "#210958"
-                document.getElementById("player-paddle").style.opacity = "0"
-                document.getElementById("computer-paddle").style.opacity = "0"
+                document.getElementById('player-paddle').style.backgroundColor = '#210958'
+                document.getElementById('player-paddle').style.opacity = '0'
+                document.getElementById('computer-paddle').style.opacity = '0'
             }, 1000)
         }
     }
@@ -95,26 +95,26 @@ function Hero(props) {
     let velocity = 0.015
 
     /* function getPlayer_y() {
-        return parseFloat(getComputedStyle(document.getElementById("player-paddle")).getPropertyValue("--position"))
+        return parseFloat(getComputedStyle(document.getElementById('player-paddle')).getPropertyValue('--position'))
     }  */  
 
     function setPlayer_y (value) {
-        document.getElementById("player-paddle").style.setProperty("--position", value)
+        document.getElementById('player-paddle').style.setProperty('--position', value)
     }
 
     function getComputer_y() {
-        return parseFloat(getComputedStyle(document.getElementById("computer-paddle")).getPropertyValue("--position"))
+        return parseFloat(getComputedStyle(document.getElementById('computer-paddle')).getPropertyValue('--position'))
     }   
 
     function setComputer_y (value) {
-        document.getElementById("computer-paddle").style.setProperty("--position", value)
+        document.getElementById('computer-paddle').style.setProperty('--position', value)
     }
 
     function updateComputer(delta) {
         setComputer_y(getComputer_y() + (0.005 * delta * (getBall_y() - getComputer_y())))
     }
 
-    document.addEventListener("mousemove", e => {
+    document.addEventListener('mousemove', e => {
         if (startGame) {
             setPlayer_y((e.y / window.innerHeight) * 100)
         }
@@ -137,10 +137,10 @@ function Hero(props) {
     let startGame = false
 
     window.onload = () => {
-        document.getElementById("ball").addEventListener("click", () => {
+        document.getElementById('ball').addEventListener('click', () => {
             startGame = true
-            document.getElementById("player-paddle").style.opacity = "1"
-            document.getElementById("computer-paddle").style.opacity = "1"
+            document.getElementById('player-paddle').style.opacity = '1'
+            document.getElementById('computer-paddle').style.opacity = '1'
         })
     }
 
@@ -159,18 +159,18 @@ function Hero(props) {
     window.requestAnimationFrame(update)
 
     return (
-        <div className="Hero">
-            <div className="Ball" id="ball"></div>
-            <div className="Paddle Left" id="player-paddle"></div>
-            <div className="Paddle Right" id="computer-paddle"></div>
+        <div className='Hero'>
+            <div className='Ball' id='ball'></div>
+            <div className='Paddle Left' id='player-paddle'></div>
+            <div className='Paddle Right' id='computer-paddle'></div>
 
             <h1>{props.title}</h1>
             <h2>{props.subtitle}</h2>
 
-            <a className="scroll" href="#scroll-anchor">Scroll Down</a>
-            <div className="scroll-down"></div>
+            <a className='scroll' href='#scroll-anchor'>Scroll Down</a>
+            <div className='scroll-down'></div>
 
-            <div className="scroll-anchor" id="scroll-anchor"></div>
+            <div className='scroll-anchor' id='scroll-anchor'></div>
         </div>
     );
   }

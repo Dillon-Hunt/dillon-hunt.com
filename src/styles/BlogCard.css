@@ -56,21 +56,23 @@
     width: fit-content;
 }
 
-.BlogCard p:nth-child(2) {
+.BlogCard__Date {
     position: absolute;
     color: var(--font-important);
     font-size: calc(var(--font-small) - 2px);
-    top: 1em;
+    top: 1.5em;
     left: 20px;
+    margin: 0;
     color: #b5b5b5;
 }
 
-.BlogCard p:nth-child(3) {
+.BlogCard__WordCount {
     position: absolute;
     color: var(--font-important);
     font-size: calc(var(--font-small) - 2px);
-    top: 1em;
+    top: 1.5em;
     right: 20px;
+    margin: 0;
     text-align: right;
     color: #b5b5b5;
 }
