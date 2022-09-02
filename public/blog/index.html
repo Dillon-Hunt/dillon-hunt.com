@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <link rel="stylesheet" href="/static/css/syntax.css">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&family=Rubik&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/blog/list.css">
+        <title>Blog | Dillon Hunt</title>
+    </head>
+    <body>
+
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/hero.css">
+</head>
+<body>
+
+    <head>
+    <link rel="stylesheet" href="/static/css/partials/navigation.css">
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-link" selected='' href="/">Home</a>
+        <a class="nav-link" selected='true' href="/blog">Blog</a>
+        <a class="nav-link" selected='' href="/challenges">Challenges</a>
+    </nav>    
+
+    <nav class="brand-nav">
+        <a class="brand"  href="/">DILLON HUNT</a>
+    </nav>
+</body>
+
+
+    <section class="hero">
+        <h1 class="title">Welcome To My Blog</h1>
+        <p class="subtitle">You have reached my blog, scroll to view my posts.</p>
+    </section>    
+</body>
+
+
+        <section class="post-list">
+        
+            <article class="post-wrapper">
+                <a class="post" href="/blog/newtab-pastels/">
+                    <div class="content-wrapper">
+                        <p>New Project - 1 min read</p>
+                        <h2>NewTab Pastels</h2>
+                        A fun minimalist &amp; colorful customizable pastel themed new tab page with search bar.
+                        <p>Aug 4 - 2022</p>
+                    </div>
+                    <img class="image" src="/blog/newtab-pastels//img/cover.png" alt="NewTab Pastels">
+                </a>
+            </article>
+        
+            <article class="post-wrapper">
+                <a class="post" href="/blog/social-media-app/">
+                    <div class="content-wrapper">
+                        <p>New Project - 1 min read</p>
+                        <h2>Social Media App</h2>
+                        A social media app made with react and firebase to create and share with friends and communities.
+                        <p>Jul 20 - 2022</p>
+                    </div>
+                    <img class="image" src="/blog/social-media-app//img/cover.png" alt="Social Media App">
+                </a>
+            </article>
+        
+            <article class="post-wrapper">
+                <a class="post" href="/blog/educational-platformer-game/">
+                    <div class="content-wrapper">
+                        <p>New Project - 4 min read</p>
+                        <h2>Platformer</h2>
+                        This project was designed to create a fun platformer game to be used in the classroom with youn students to teach them about geographical landmarks, countries and flags, whilst also being enjoyable and jun to play.
+                        <p>Jun 10 - 2020</p>
+                    </div>
+                    <img class="image" src="/blog/educational-platformer-game//img/cover.webp" alt="Platformer">
+                </a>
+            </article>
+        
+            <article class="post-wrapper">
+                <a class="post" href="/blog/newtab/">
+                    <div class="content-wrapper">
+                        <p>New Project - 1 min read</p>
+                        <h2>NewTab</h2>
+                        Exploring the development of the Firefox new tab extension NewTab.
+                        <p>Dec 3 - 2020</p>
+                    </div>
+                    <img class="image" src="/blog/newtab//img/cover.png" alt="NewTab">
+                </a>
+            </article>
+        
+        </section>
+
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/footer.css">
+</head>
+<body>
+    <section class="footer">
+        <form class="contact-form">
+            <h2>CONTACT</h2>
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="text" name="subject" placeholder="Subject" required />
+            <textarea placeholder="Message" name="body" required></textarea>
+            <button class="contact-form-submit" type="submit">Send Message</button>
+        </form>
+        <p class="©">© Dillon Hunt 2022</p>
+    </section>    
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const data = {
+                name: formData.get('name'),
+                subject: formData.get('subject'),
+                body: formData.get('body')
+            };  
+
+            window.location.href = `mailto:admin@dillon-hunt.com?subject=${data.name} - ${data.subject}&body=${data.body.replaceAll('\n', '%0A')}`
+
+            document.querySelector('.contact-form').reset() 
+        })
+    </script>
+</body>
+    </body>
+    </html>
+
+
+</body>
+</html>

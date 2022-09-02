@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/challenges/list.css">
+        <title>{{ .Title }}</title>
+    </head>
+    <body>
+
+        {{ partial "hero.html" . }}
+
+        <section class="challenges-list">
+            {{ range .Pages }}
+                <article class="challenge-wrapper">
+                    <a class="challenge" href="{{ .RelPermalink }}">
+                        <div class="content-wrapper">
+                            <p>{{ .Params.category }} #{{ .Params.challenge_number }}</p>
+                            <h2>{{ .Title }}</h2>
+                            {{ .Description | truncate 250 }}
+                            <p>{{ .Params.date_string }}</p>
+                        </div>
+                        <img class="image" src="{{ print .RelPermalink .Params.image }}" alt="{{ .Title }}">
+                    </a>
+                </article>
+            {{ end }}
+        </section>
+
+        {{ partial "footer.html" . }}
+    </body>
+    </html>
+
+{{ end }}

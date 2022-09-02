@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <link rel="stylesheet" href="/static/css/syntax.css">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&family=Rubik&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/blog/single.css">
+
+        <title>Pentagon Game</title>
+    </head>
+    <body>
+        
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/hero.css">
+</head>
+<body>
+
+    <head>
+    <link rel="stylesheet" href="/static/css/partials/navigation.css">
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-link" selected='' href="/">Home</a>
+        <a class="nav-link" selected='' href="/blog">Blog</a>
+        <a class="nav-link" selected='' href="/challenges">Challenges</a>
+    </nav>    
+
+    <nav class="brand-nav">
+        <a class="brand"  href="/">DILLON HUNT</a>
+    </nav>
+</body>
+
+
+    <section class="hero">
+        <h1 class="title">Pentagon Strategy Game</h1>
+        <p class="subtitle">A challenge in non-rectangular grid based computing.</p>
+    </section>    
+</body>
+
+
+        <article class="content-wrapper" itemscope itemtype="http://schema.org/Article">
+            <meta itemprop="datePublished" content="2022-09-02 19:10:32 &#43;1000 AEST" />
+            <meta itemprop="dateModified" content="2022-09-02 19:10:32 &#43;1000 AEST" />
+            <meta itemprop="image" content="/img/cover.png" />
+            <meta itemprop="author" content="Dillon Hunt" />
+            <meta itemprop="publisher" content="dillon-hunt.com" />
+
+            <h1 id="challenge-2">Challenge #2</h1>
+<p>Create a pentagon tile based strategy game involving a constant energy supply to advanced forward.</p>
+<h1 id="final-solution">Final Solution</h1>
+<p><img src="./img/cover-full.png" alt="Pentagon Game"></p>
+
+        </article>
+
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/footer.css">
+</head>
+<body>
+    <section class="footer">
+        <form class="contact-form">
+            <h2>CONTACT</h2>
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="text" name="subject" placeholder="Subject" required />
+            <textarea placeholder="Message" name="body" required></textarea>
+            <button class="contact-form-submit" type="submit">Send Message</button>
+        </form>
+        <p class="©">© Dillon Hunt 2022</p>
+    </section>    
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const data = {
+                name: formData.get('name'),
+                subject: formData.get('subject'),
+                body: formData.get('body')
+            };  
+
+            window.location.href = `mailto:admin@dillon-hunt.com?subject=${data.name} - ${data.subject}&body=${data.body.replaceAll('\n', '%0A')}`
+
+            document.querySelector('.contact-form').reset() 
+        })
+    </script>
+</body>
+    </body>
+    </html>
+
+
+</body>
+</html>

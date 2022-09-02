@@ -1,0 +1,31 @@
+.post-list {
+    margin: 80px;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-wrapper {
+    width: calc(75vw - 160px);
+    border-radius: 5px;
+}
+
+.post {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: white;
+}
+
+.content-wrapper {
+    width: calc(100% - 250px);
+}
+
+.image {
+    width: 250px;
+    height: 150px;
+    margin: auto 0;
+    border-radius: 5px;
+    object-fit: cover;
+}

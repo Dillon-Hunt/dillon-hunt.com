@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <link rel="stylesheet" href="/static/css/syntax.css">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&family=Rubik&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/blog/single.css">
+
+        <title>NewTab Pastels</title>
+    </head>
+    <body>
+        
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/hero.css">
+</head>
+<body>
+
+    <head>
+    <link rel="stylesheet" href="/static/css/partials/navigation.css">
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-link" selected='' href="/">Home</a>
+        <a class="nav-link" selected='' href="/blog">Blog</a>
+        <a class="nav-link" selected='' href="/challenges">Challenges</a>
+    </nav>    
+
+    <nav class="brand-nav">
+        <a class="brand"  href="/">DILLON HUNT</a>
+    </nav>
+</body>
+
+
+    <section class="hero">
+        <h1 class="title">NewTab Pastels</h1>
+        <p class="subtitle">Redesigning the NewTab experience.</p>
+    </section>    
+</body>
+
+
+        <article class="content-wrapper" itemscope itemtype="http://schema.org/Article">
+            <meta itemprop="datePublished" content="2022-08-04 10:19:57 &#43;1000 AEST" />
+            <meta itemprop="dateModified" content="2022-09-02 10:19:57 &#43;1000 AEST" />
+            <meta itemprop="image" content="/img/cover.png" />
+            <meta itemprop="author" content="Dillon Hunt" />
+            <meta itemprop="publisher" content="dillon-hunt.com" />
+
+            <h1 id="what-is-newtab-pastels">What is NewTab Pastels?</h1>
+<p><img src="./img/cover.png" alt="NewTab Pastels">
+NewTab Pastels is a fun minimalist &amp; colorful customizable pastel themed new tab page with search bar. Inspired by the original <a href="../newtab/">NewTab</a>, NewTab Pastels was designed to me a more minimal version, while still allowing for a great amount of customization and features.</p>
+<h1 id="features">Features</h1>
+<ul>
+<li>NewTab page slowly scrolls through the rainbow on each new tab.</li>
+<li>Customize your NewTab page with the sidebars.</li>
+<li>Add custom bookmarks directly to you new tab page.</li>
+<li>Random quotes to spark curiosity on each new tab.</li>
+<li>Dynamically adjust you browser theme to match you current color (optional).</li>
+</ul>
+<h1 id="design">Design</h1>
+<p><img src="./img/customization.png" alt="NewTab Pastels Customization">
+NewTab Pastels has a sleek minimal design with two bars that pop out from the sides of the screen when you hover your mouse near them. The left dock allows you to change the background color while the right allows you to toggle various features. You are also able to add bookmarks for sites you frequently visit.</p>
+
+        </article>
+
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/footer.css">
+</head>
+<body>
+    <section class="footer">
+        <form class="contact-form">
+            <h2>CONTACT</h2>
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="text" name="subject" placeholder="Subject" required />
+            <textarea placeholder="Message" name="body" required></textarea>
+            <button class="contact-form-submit" type="submit">Send Message</button>
+        </form>
+        <p class="©">© Dillon Hunt 2022</p>
+    </section>    
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const data = {
+                name: formData.get('name'),
+                subject: formData.get('subject'),
+                body: formData.get('body')
+            };  
+
+            window.location.href = `mailto:admin@dillon-hunt.com?subject=${data.name} - ${data.subject}&body=${data.body.replaceAll('\n', '%0A')}`
+
+            document.querySelector('.contact-form').reset() 
+        })
+    </script>
+</body>
+    </body>
+    </html>
+
+
+</body>
+</html>

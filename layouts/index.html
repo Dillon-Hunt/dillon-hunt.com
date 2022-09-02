@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&family=Rubik&display=swap" rel="stylesheet"> 
+
+    <title>{{ .Title }}</title>
+</head>
+<body>
+    
+    {{ partial "hero.html" . }}
+
+
+    <h2 class="section-title">ABOUT ME</h2>
+
+    <section class="about">
+        <p>
+            My name is Dillon Hunt, I am high-school student and I love programming. I live on the Sunshine Coast in Australia. I like to create small websites & games in my spare time to improve my skills. When creating a website I usually use vanilla HTML, CSS and JavaScript or the React framework. I am mainly a frontend programmer but I am trying to build my experience in full stack development.
+            <br />
+            <br />
+            On this website you can find all my projects below and I also have a blog and challenges page to check out. The blog page details all my projects as well as project updates and anything else programming related. The challenges page is an expanding list of small challenges I have tried to complete, feel free to give one of them a go if you like.
+            <br />
+            <br />
+            If you would like to contact me you can do so by sending me an email using the form provided below or email me directly at <strong class="email" onclick="window.location.href = 'mailto:admin@dillon-hunt.com'">admin@dillon-hunt.com</strong>.
+        </p>
+    </section>
+
+    <h2 class="section-title">PROJECTS</h2>
+
+    <section class="projects">
+        {{ range where .Pages "Params.link" "/blog" }}
+            {{ range where .Pages "Params.category" "New Project" }}
+                <article class="project">
+                    <img src="{{ print .Permalink .Params.image }}" alt="{{ .Title }}">
+                    <div class="content-wrapper">
+                        <p class="project-flag">PROJECT</p>
+                        <h2 class="project-name">{{ .Title }}</h2>
+                        <p class="project-stack">{{ .Params.Stack }}</p>
+                        <p class="project-description">{{ .Description }}</p>
+                        <div class="project-links">
+                            <a href="{{ .Permalink }}">Blog Post</a>
+
+                            {{ if .Params.live }}
+                                <a href="{{ .Params.live }}" target="_Blank">See Project</a>
+                            {{ end }}
+
+                            {{ if .Params.github }}
+                                <a href="{{ .Params.github }}" target="_Blank">Github</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </article>
+            {{ end }}
+        {{ end }}
+    </section>
+
+    {{ partial "footer.html" . }}
+</body>
+</html>

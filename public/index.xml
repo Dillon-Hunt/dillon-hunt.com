@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home | Dillon Hunt on Dillon Hunt</title>
+    <link>https://dillon-hunt.web.app/</link>
+    <description>Recent content in Home | Dillon Hunt on Dillon Hunt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Sep 2022 19:10:32 +1000</lastBuildDate><atom:link href="https://dillon-hunt.web.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pentagon Game</title>
+      <link>https://dillon-hunt.web.app/challenges/pentagon-game/</link>
+      <pubDate>Fri, 02 Sep 2022 19:10:32 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.web.app/challenges/pentagon-game/</guid>
+      <description>Challenge #2 Create a pentagon tile based strategy game involving a constant energy supply to advanced forward.
+Final Solution </description>
+    </item>
+    
+    <item>
+      <title>Logic Gates</title>
+      <link>https://dillon-hunt.web.app/challenges/logic-gates/</link>
+      <pubDate>Fri, 02 Sep 2022 18:13:32 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.web.app/challenges/logic-gates/</guid>
+      <description>Challenge #1 Create a logic gate simulation that takes inputs and produces an output base on the configuration of logic gates.</description>
+    </item>
+    
+    <item>
+      <title>NewTab Pastels</title>
+      <link>https://dillon-hunt.web.app/blog/newtab-pastels/</link>
+      <pubDate>Thu, 04 Aug 2022 10:19:57 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.web.app/blog/newtab-pastels/</guid>
+      <description>What is NewTab Pastels? NewTab Pastels is a fun minimalist &amp;amp; colorful customizable pastel themed new tab page with search bar. Inspired by the original NewTab, NewTab Pastels was designed to me a more minimal version, while still allowing for a great amount of customization and features.
+Features NewTab page slowly scrolls through the rainbow on each new tab. Customize your NewTab page with the sidebars. Add custom bookmarks directly to you new tab page.</description>
+    </item>
+    
+    <item>
+      <title>Social Media App</title>
+      <link>https://dillon-hunt.web.app/blog/social-media-app/</link>
+      <pubDate>Sun, 10 Jul 2022 19:18:08 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.web.app/blog/social-media-app/</guid>
+      <description>Idea The social media app was designed to combine the key experience of Instagram with it&amp;rsquo;s photo sharing capabilities alongside the community based structure of sites like reddit, together you would be able to set up community events, create group goals, message your friends and share photos with each other.
+Progress The project has the fundamental aspects of a social media platform, including authentication, posting, linking and following however key features such as commenting and communities are still missing.</description>
+    </item>
+    
+    <item>
+      <title>Platformer</title>
+      <link>https://dillon-hunt.web.app/blog/educational-platformer-game/</link>
+      <pubDate>Thu, 30 Jun 2022 21:26:53 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.web.app/blog/educational-platformer-game/</guid>
+      <description>Idea The task for the platformer game was to create a fun and educational platformer for primary school aged students.
+Breakdown of The Task The framework which is used for this project is Phaser.js which means this will be a web based JavaScript using canvas. Since the game is to be used in schools obviously there will be no or minimal violence and it needs to be quite easy to pick up and play.</description>
+    </item>
+    
+    <item>
+      <title>NewTab</title>
+      <link>https://dillon-hunt.web.app/blog/newtab/</link>
+      <pubDate>Thu, 03 Dec 2020 09:43:36 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.web.app/blog/newtab/</guid>
+      <description>Project Idea The idea of NewTab was to create a free web extension to allow users to have a customizable new tab page that was hard to find with similar products. The entire project is based on customizability and simplicity.
+An Add-on For Everyone NewTab is an all in one New Tab Add-on for every Firefox user. With heaps features such as autocomplete, notes, to do list, stats customization and more.</description>
+    </item>
+    
+  </channel>
+</rss>
