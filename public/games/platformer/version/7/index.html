@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./phaser.js"></script>
+    <title>Platformer Game</title>
+</head>
+<body>
+    <canvas></canvas>
+</body>
+<script>
+    var config = {
+        type: Phaser.AUTO,
+        width: 960,
+        height: 320,
+        pixelArt: true,
+        backgroundColor: '#4b73a7',
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: { y: 500 }
+            }
+        },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+var game = new Phaser.Game(config);
+
+// Player Speed
+speed = 90
+
+// Player Jump Height
+jump = 250
+
+// Player Scale
+playerSize = 1
+
+// Player Bounce
+playerBounce = 0
+
+// Ground Friction
+friction = 0.6
+
+// Game Over
+gameOver = false
+
+// Reduce Speed While Jumping
+reducedSpeed = 1.5
+
+// Player's Score
+score = 0
+
+// Hide Message
+hide = 1
+
+// Checkpoint x Value
+checkpointX = 64
+
+// Checkpoint y Value
+checkpointY = 20
+
+// Lives
+lives = 3
+
+// Time For Jetpack
+jetpackTime = 0
+
+//Player Momentum
+MomentumLeft = 1
+MomentumRight = 1
+
+// Master Volume
+Volume = 1
+
+// Time Played
+time = 0
+
+// End Lives
+endLives = 0
+
+//Final Score
+finalScore = 0
+
+setInterval(() => {
+    time++
+}, 100)
+
+function preload ()
+{
+    // Assets
+
+    // Summer
+    this.load.image('TopLeft', 'Summer/TopLeft.png')
+    this.load.image('TopCenter', 'Summer/TopCenter.png')
+    this.load.image('TopRight', 'Summer/TopRight.png')
+    this.load.image('TopLeftFloating', 'Summer/TopLeftFloating.png')
+    this.load.image('TopCenterFloating', 'Summer/TopCenterFloating.png')
+    this.load.image('TopRightFloating', 'Summer/TopRightFloating.png')
+    this.load.image('CornerTopLeft', 'Summer/CornerTopLeft.png')
+    this.load.image('CornerTopRight', 'Summer/CornerTopRight.png')
+    this.load.image('CornerBottomLeft', 'Summer/CornerBottomLeft.png')
+    this.load.image('CornerBottomRight', 'Summer/CornerBottomRight.png')
+    this.load.image('TopSingle', 'Summer/TopSingle.png')
+    this.load.image('TopSingleFloating', 'Summer/TopSingleFloating.png')
+
+    // Fall
+    this.load.image('TopLeftFall', 'Fall/TopLeft.png')
+    this.load.image('TopCenterFall', 'Fall/TopCenter.png')
+    this.load.image('TopRightFall', 'Fall/TopRight.png')
+    this.load.image('TopSingleFall', 'Fall/TopSingle.png')
+
+    // Winter
+    this.load.image('TopLeftWinter', 'Winter/TopLeft.png')
+    this.load.image('TopCenterWinter', 'Winter/TopCenter.png')
+    this.load.image('TopRightWinter', 'Winter/TopRight.png')
+    this.load.image('TopSingleWinter', 'Winter/TopSingle.png')
+
+    // Water
+    this.load.image('TopLeftWater', 'Water/TopLeft.png')
+    this.load.image('TopCenterWater', 'Water/TopCenter.png')
+    this.load.image('TopRightWater', 'Water/TopRight.png')
+    this.load.image('TopSingleWater', 'Water/TopSingle.png')
+
+    // Power Up
+    this.load.image('grow', 'grow.png')
+    this.load.image('shrink', 'shrink.png')
+    this.load.image('speed', 'speed.png')
+    this.load.image('life', 'life.png')
+    this.load.image('power', 'power.png')
+
+    // Effects
+    this.load.image('jump', 'jump.png')
+
+    // Sounds
+    this.load.audio('Checkpoint', ['Sound/Checkpoint.wav']);
+    this.load.audio('Powerup', ['Sound/Powerup.wav']);
+    this.load.audio('Coin', ['Sound/Coin.wav']);
+    this.load.audio('Jump', ['Sound/Jump.wav']);
+    this.load.audio('Dead', ['Sound/Dead.wav']);
+    this.load.audio('Music', ['Sound/Music.wav']);
+    this.load.audio('SpikeHit', ['Sound/Spike.wav']);
+
+    // Flags
+    this.load.image('Italy', 'Flags/Italy.png')
+    this.load.image('Switzerland', 'Flags/Switzerland.png')
+    this.load.image('Germany', 'Flags/Germany.png')
+    this.load.image('Iceland', 'Flags/Iceland.png')
+    this.load.image('France', 'Flags/France.png')
+    this.load.image('Denmark', 'Flags/Denmark.png')
+
+    // Background Assets  
+    this.load.image('Coliseum', 'BackgroundAssests/Coliseum.png') 
+    this.load.image('Pisa', 'BackgroundAssests/Pisa.png')
+    this.load.image('BerneCathedral', 'BackgroundAssests/BerneCathedral.png')
+    this.load.image('BrandenburgGate', 'BackgroundAssests/BrandenburgGate.png') 
+    this.load.image('Reykjavik', 'BackgroundAssests/Reykjavik.png') 
+    this.load.image('EifleTower', 'BackgroundAssests/EifleTower.png')
+    this.load.image('Nyhavn', 'BackgroundAssests/Nyhavn.png')
+
+    this.load.image('Grave', 'BackgroundAssests/Grave.png')
+    this.load.image('Flag', 'BackgroundAssests/Flag.png')
+    this.load.image('heart', 'BackgroundAssests/heart.png')
+    this.load.image('cell', 'BackgroundAssests/cell.png')
+    
+
+    // Other
+    this.load.image('CenterLeft', 'CenterLeft.png')
+    this.load.image('Center', 'Center.png')
+    this.load.image('CenterRight', 'CenterRight.png')
+    this.load.image('BottomLeft', 'BottomLeft.png')
+    this.load.image('BottomCenter', 'BottomCenter.png')
+    this.load.image('BottomRight', 'BottomRight.png')
+    this.load.image('CenterSingle', 'CenterSingle.png')
+    this.load.image('BottomSingle', 'BottomSingle.png')
+    this.load.image('Spike', 'Spike.png')
+    this.load.image('star', 'star.png')
+    this.load.image('coin-2', 'coin-2.png')
+    this.load.image('coin-4', 'coin-4.png')
+    this.load.image('coin-5', 'coin-5.png')
+    this.load.image('coin-8', 'coin-8.png')
+    this.load.image('Wallpaper', 'Wallpaper.png')
+    this.load.image('City', 'City.png')
+    this.load.spritesheet('Player', 'Player.png', { frameWidth: 11, frameHeight: 16 })
+    this.load.bitmapFont('font', 'font.png', 'font.xml');
+}
+
+function create ()
+{
+    //Background
+    this.add.image(0, 52, 'Wallpaper').setScale(2)
+    this.add.image(1014, 52, 'Wallpaper').setScale(2)
+    this.add.image(2028, 52, 'City').setScale(2)
+    this.add.image(3042, 52, 'City').setScale(2)
+    this.add.image(4056, 52, 'Wallpaper').setScale(2)
+
+    // Flags & Background Assets
+    this.add.image(0, 16, 'Italy').setOrigin(0, 0.5).setScale(2) 
+    this.add.bitmapText(0, 34, 'font', 'Italy', 8)
+    this.add.image(112, 80, 'Coliseum').setOrigin(0, 1).setScale(2)
+    this.add.image(32, 144, 'Pisa').setOrigin(0, 1).setScale(2)
+    this.add.bitmapText(53, 0, 'font','- Coliseum', 6)
+    this.add.bitmapText(53, 10, 'font','- Leaning Tower', 6)
+    this.add.bitmapText(53, 20, 'font','  of Pisa', 6)
+
+    this.add.image(507, 16, 'Switzerland').setOrigin(0, 0.5).setScale(2)
+    this.add.bitmapText(507, 34, 'font', 'Switzerland', 8)
+    this.add.image(539, 144, 'BerneCathedral').setOrigin(0, 1).setScale(2) 
+    this.add.bitmapText(560, 0, 'font','- Berne Cathedral', 6)
+
+    this.add.image(1014, 16, 'Germany').setOrigin(0, 0.5).setScale(2)
+    this.add.bitmapText(1014, 34, 'font', 'Germany', 8)
+    this.add.image(1028, 144, 'BrandenburgGate').setOrigin(0, 1).setScale(2) 
+    this.add.bitmapText(1071, 0, 'font','- Brandenburg', 6)
+    this.add.bitmapText(1071, 10, 'font','  Gate', 6)
+    
+    this.add.image(1521, 16, 'Iceland').setOrigin(0, 0.5).setScale(2) 
+    this.add.bitmapText(1521, 34, 'font', 'Iceland', 8)
+    this.add.image(1553, 144, 'Reykjavik').setOrigin(0, 1).setScale(2) 
+    this.add.bitmapText(1580, 0, 'font','- Reykjavik', 6) 
+    
+    this.add.image(2028, 16, 'France').setOrigin(0, 0.5).setScale(2) 
+    this.add.bitmapText(2028, 34, 'font', 'France', 8)
+    this.add.image(2060, 144, 'EifleTower').setOrigin(0, 1).setScale(2)
+    this.add.bitmapText(2087, 0, 'font','- Eifle Tower', 6)
+    
+    this.add.image(2535, 16, 'Denmark').setOrigin(0, 0.5).setScale(2) 
+    this.add.bitmapText(2535, 34, 'font', 'Denmark', 8)
+    this.add.image(2592 - 8, 144, 'Nyhavn').setOrigin(0, 1).setScale(2)
+    this.add.bitmapText(2594, 0, 'font','- Nyhavn', 6)
+
+    // Player
+    player = this.physics.add.sprite(64, 20, 'Player').setOrigin(0.5, 1);
+    stars = this.physics.add.group();
+    powerup = this.physics.add.group();
+    player.setCollideWorldBounds(false); //true, 2, 0
+
+    // Player Animation
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('Player', { start: 1, end: 1 }),
+        frameRate: 20,
+    });
+
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('Player', { start: 0, end: 0 }),
+        frameRate: 20,
+    });
+
+    cursors = this.input.keyboard.createCursorKeys();
+
+    // Camera
+    this.cameras.main.startFollow(player, true, 1, 0.01);
+    this.cameras.main.setZoom(1.5)
+
+    // Physics
+    platforms = this.physics.add.staticGroup();
+    effects = this.physics.add.staticGroup();
+    graves = this.physics.add.staticGroup();
+    flag = this.physics.add.staticGroup();
+    spikes = this.physics.add.staticGroup()
+
+    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(stars, platforms);
+    this.physics.add.collider(powerup, platforms);
+    this.physics.add.collider(graves, player)
+
+    this.physics.add.collider(player, spikes, hitSpikes, null, this);
+    this.physics.add.collider(player, effects, hitEffects, null, this);
+    this.physics.add.overlap(player, powerup, collectPowerup, null, this);
+    starCollider = this.physics.add.overlap(player, stars, hitStars, null, this);
+    this.physics.add.overlap(player, flag, hitFlag, null, this);
+
+    // Checkpoints
+    flag.create(507, 144, 'Flag').setOrigin(0.5, 1).setScale(1.00)
+    flag.create(1046, 144, 'Flag').setOrigin(0.5, 1).setScale(1.00)
+    flag.create(1553, 144, 'Flag').setOrigin(0.5, 1).setScale(1.00)
+    flag.create(2050, 144, 'Flag').setOrigin(0.5, 1).setScale(1.00)
+    flag.create(2582, 144, 'Flag').setOrigin(0.5, 1).setScale(1.00)
+    flag.create(3089, 144, 'Flag').setOrigin(0.5, 1).setScale(1.00)
+    
+    // Array to Visually Represent the Map
+    let map = [
+        [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , ,  ,  ,  ,  ,  ,  ,  ,  ,  ,8,  ,],
+        [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 7,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 6,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,22,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [ ,  ,  ,  ,  ,  ,  , 1, 1, 1, 1, 1, 1,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [ ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4, 4, 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,33,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [6,  ,  ,  ,  ,  ,  ,  ,  ,  , 6,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,66,  ,  ,  ,  ,  ,  ,  , 4, 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 7,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [ ,  ,  ,  ,  ,  ,  ,  ,44,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,33,  ,  ,  ,  ,  ,55,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 3, 3,  , 3, 3, 3,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  , 1, 1,  ,  ,  , 1, 1,  ,  , 6,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 7,  ,  ,  ,  ,  ,  ,  ,  ,  7,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  , 1,  ,  , 1,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 1, 1, 1, 1, 1,  ,12,13,13,14,  , 1, 1,  ,  ,  ,  ,  , 1, 1, 1, 1,  ,  , 1, 1, 1, 1,  ,  , 4, 4, 4, 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1, 1, 1, 1, 1, 1,  ,  ,  , 1,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  , 3, 3, 3, 3, 3, 3, 3, 3, 3,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,55,  ,  ,  , 3, 3, 3, 3, 3,  ,  , 1, 1, 1, 1, 1, 1,  ,  ,  ,  ,  ,  , 1,16, 2, 2, 2,17,16, 2, 2, 2,17, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  , 8,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  , 1, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  , 1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,18, 1, 1, 1,19,18, 1, 1, 1,19, 1,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,99,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,99,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  , 1,16, 2, 2, 2, 2, 2,17, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 7,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 3, 3, 3, 3,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  , 1,18, 1, 1, 1, 1, 1,19, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  , 1, 9, 9, 9, 9, 9, 9, 9, 9, 9, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  , 1, 1, 1,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,55,  ,  ,  ,  , 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4, 4, 4, 4, 4, 4, 4,  ,  , 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 8,66, 8,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,99,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1,99, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 1, 1, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  , 4, 4, 4,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,],
+        [1, 5, 5, 5, 5, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 5, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 5, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    ]
+
+    // Instructional Text
+    this.add.bitmapText(0, -64, 'font','Use The Arrow Keys To Move!', 10)
+
+    // Bonus Area
+    bonusText = this.add.bitmapText(3089, 64, 'font','', 10)
+
+    // Map Generation
+    for (let y = map.length; y > 0; y--) {
+        for (let x = map[y - 1].length; x > 0; x--) {
+            if (map[y - 1][x - 1] == 1) {
+                if (map[y - 1][x - 2] == undefined && map[y - 1][x] == undefined) {
+                    platforms.create(16 * x - 8, 16 * y - 8, 'TopSingleFloating').setScale(1.00).refreshBody();
+                } else if (map[y - 1][x - 2] == undefined || map[y - 1][x - 2] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopLeft').setScale(1.00).refreshBody();
+                    } else if (map[y] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'BottomLeft').setScale(1.00).refreshBody();
+                    } else if (map[y][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'BottomLeft').setScale(1.00).refreshBody();
+                    } else {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'CenterLeft').setScale(1.00).refreshBody();
+                    }
+                } else if (map[y - 1][x] == undefined || map[y - 1][x] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopRight').setScale(1.00).refreshBody();
+                    } else if (map[y] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'BottomRight').setScale(1.00).refreshBody();
+                    } else if (map[y][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'BottomRight').setScale(1.00).refreshBody();
+                    } else {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'CenterRight').setScale(1.00).refreshBody();
+                    }
+                } else {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopCenter').setScale(1.00).refreshBody();
+                }
+            } else if (map[y - 1][x - 1] == 3) {
+                if (map[y - 1][x - 2] == undefined && map[y - 1][x] == undefined) {
+                    platforms.create(16 * x - 8, 16 * y - 8, 'TopSingleFall').setScale(1.00).refreshBody();
+                } else if (map[y - 1][x - 2] == undefined || map[y - 1][x - 2] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopLeftFall').setScale(1.00).refreshBody();
+                    }
+                } else if (map[y - 1][x] == undefined || map[y - 1][x] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopRightFall').setScale(1.00).refreshBody();
+                    }
+                } else {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopCenterFall').setScale(1.00).refreshBody();
+                }
+            } else if (map[y - 1][x - 1] == 4) {
+                if (map[y - 1][x - 2] == undefined && map[y - 1][x] == undefined) {
+                    platforms.create(16 * x - 8, 16 * y - 8, 'TopSingleWinter').setScale(1.00).refreshBody();
+                } else if (map[y - 1][x - 2] == undefined || map[y - 1][x - 2] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopLeftWinter').setScale(1.00).refreshBody();
+                    }
+                } else if (map[y - 1][x] == undefined || map[y - 1][x] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopRightWinter').setScale(1.00).refreshBody();
+                    }
+                } else {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopCenterWinter').setScale(1.00).refreshBody();
+                }
+            } else if (map[y - 1][x - 1] == 61) {
+                if (map[y - 1][x - 2] == undefined && map[y - 1][x] == undefined) {
+                    platforms.create(16 * x - 8, 16 * y - 8, 'TopSingleWater').setScale(1.00).refreshBody();
+                } else if (map[y - 1][x - 2] == undefined || map[y - 1][x - 2] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopLeftWater').setScale(1.00).refreshBody();
+                    }
+                } else if (map[y - 1][x] == undefined || map[y - 1][x] == 2) {
+                    if (map[y - 2][x - 1] == undefined) {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopRightWater').setScale(1.00).refreshBody();
+                    }
+                } else {
+                        platforms.create(16 * x - 8, 16 * y - 8, 'TopCenterWater').setScale(1.00).refreshBody();
+                }
+            }  else if (map[y - 1][x - 1] == 2) {
+                spikes.create(16 * x - 8, 16 * y - 2, 'Spike').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 3) {
+                stars.create(16 * x - 8, 16 * y - 8, 'star').setScale(0.50).refreshBody();
+            } else if (map[y - 1][x - 1] == 5) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'Center').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 6) {
+               stars.create(16 * x - 8, 16 * y - 8, 'coin-2').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 7) {
+                stars.create(16 * x - 8, 16 * y - 8, 'coin-4').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 8) {
+                stars.create(16 * x - 8, 16 * y - 8, 'coin-8').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 9) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'BottomCenter').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 0) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'TopSingle').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 10) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'CenterSingle').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 11) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'BottomSingle').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 12) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'TopLeftFloating').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 13) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'TopCenterFloating').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 14) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'TopRightFloating').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 15) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'TopSingleFloating').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 16) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'CornerTopLeft').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 17) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'CornerTopRight').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 18) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'CornerBottomLeft').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 19) {
+                platforms.create(16 * x - 8, 16 * y - 8, 'CornerBottomRight').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 22) {
+                powerup.create(16 * x - 8, 16 * y - 8, 'grow').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 33) {
+                powerup.create(16 * x - 8, 16 * y - 8, 'shrink').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 44) {
+                powerup.create(16 * x - 8, 16 * y - 8, 'speed').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 55) {
+                powerup.create(16 * x - 8, 16 * y - 8, 'life').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 66) {
+                powerup.create(16 * x - 8, 16 * y - 8, 'power').setScale(1.00).refreshBody();
+            } else if (map[y - 1][x - 1] == 99) {
+                effects.create(16 * x - 8, 16 * y - 8, 'jump').setScale(1.00).refreshBody();
+            }
+        }
+    }
+
+    // UI Elements
+
+    // Score
+    scoreText = this.add.bitmapText(0, 0, 'font', '0', 10)
+    HighScoreText = this.add.bitmapText(0, 0, 'font', '0', 8)
+
+
+    if (localStorage.getItem('highscore') != null) {
+        HighScoreText.setText("Highscore: " + localStorage.getItem('highscore'))
+    } else {
+        HighScoreText.setText("Highscore: 0")
+    }
+
+    // Hearts
+    heart1 = this.add.image(0, 0, 'heart').setOrigin(0, 0)
+    heart2 = this.add.image(0, 0, 'heart').setOrigin(0, 0)
+    heart3 = this.add.image(0, 0, 'heart').setOrigin(0, 0)
+
+    // Jetpack Cells
+    cell1 = this.add.image(0, 0, 'cell').setOrigin(0, 0)
+    cell2 = this.add.image(0, 0, 'cell').setOrigin(0, 0)
+    cell3 = this.add.image(0, 0, 'cell').setOrigin(0, 0)
+    bmpText = this.add.bitmapText(0, 0, 'font','', 10)  
+
+    // Sound Definitions
+    CheckpointSound = this.sound.add('Checkpoint', { loop: false, volume: 0.1 * Volume });
+    PowerupSound = this.sound.add('Powerup', { loop: false, volume: 0.04 * Volume });
+    CoinSound = this.sound.add('Coin', { loop: false, volume: 0.04 * Volume });
+    SpikeHitSound = this.sound.add('SpikeHit', { loop: false, volume: 0.2 * Volume });
+    DeadSound = this.sound.add('Dead', { loop: true, volume: 0.05 * Volume });
+    MusicSound = this.sound.add('Music', { loop: true, volume: 0.05 * Volume });
+    JumpSound = this.sound.add('Jump', { loop: false, volume: 0.025 * Volume });
+    MusicSound.play()
+}
+
+function update ()
+{  
+    // UI Element Updates
+
+    // Jetpack Cells
+    if (jetpackTime > 0) {
+        cell1.x = this.cameras.main.worldView.x + 14
+        cell1.y = this.cameras.main.worldView.y + 196
+    } else {
+        cell1.y = this.cameras.main.worldView.y - 20
+    }
+
+    if (jetpackTime > 120) {
+        cell2.x = this.cameras.main.worldView.x + 24
+        cell2.y = this.cameras.main.worldView.y + 196
+    } else {
+        cell2.y = this.cameras.main.worldView.y - 20
+    }
+
+    if (jetpackTime > 240) {
+        cell3.x = this.cameras.main.worldView.x + 34
+        cell3.y = this.cameras.main.worldView.y + 196
+    } else {
+        cell3.y = this.cameras.main.worldView.y - 20
+    }
+
+    // Health
+    if (lives > 0) {
+        heart1.x = this.cameras.main.worldView.x + 20
+        heart1.y = this.cameras.main.worldView.y + 20
+        scoreText.x = this.cameras.main.worldView.x + 76
+        scoreText.y = this.cameras.main.worldView.y + 22
+        HighScoreText.x = this.cameras.main.worldView.x + 20
+        HighScoreText.y = this.cameras.main.worldView.y + 40
+    } else {
+        heart1.y = this.cameras.main.worldView.y - 20
+        scoreText.x = this.cameras.main.worldView.x + 20
+        scoreText.y = this.cameras.main.worldView.y + 22
+        HighScoreText.x = this.cameras.main.worldView.x + 20
+        HighScoreText.y = this.cameras.main.worldView.y + 40
+        scoreText.setText('Game Over')
+        this.physics.pause()
+        player.setTint(0xff0000);
+    }
+    if (lives > 1) {
+        heart2.x = this.cameras.main.worldView.x + 38
+        heart2.y = this.cameras.main.worldView.y + 20
+    } else {
+        heart2.y = this.cameras.main.worldView.y - 20
+    }
+    if (lives > 2) {
+        heart3.x = this.cameras.main.worldView.x + 56
+        heart3.y = this.cameras.main.worldView.y + 20
+    } else {
+        heart3.y = this.cameras.main.worldView.y - 20
+    }
+
+    // GameOver is Called When the Player Hits a Spike
+    if (gameOver){
+        // Lost a Life
+        if (hide == 1) {
+            // Create a Grave at Players Location
+            graves.create(player.body.center.x, player.body.center.y + 7, 'Grave').setOrigin(0.5, 0.5)
+            bmpText.setText('You Died')
+            bmpText.x = player.body.center.x - 40
+            bmpText.y = player.body.center.y - 25
+            hide = 2
+            player.x = player.body.center.x
+            player.y = player.body.center.y + 13
+            player.setScale(0.5)
+            playerSize = 1
+            playerBounce = 0
+            player.setVelocityX(0)
+            player.setVelocityY(0)
+            lives--
+
+            // Set Music
+            DeadSound.play()
+            MusicSound.pause()
+            SpikeHitSound.play()
+        }
+        if (lives == 0) {
+            // Player Lost
+            bmpText.setText('You Lost')
+            /*
+            if (finalScore == 0) {
+                finalScore = (score + endLives) - (time / 1000)
+            }
+            HighScoreText.setText("Score: " + Math.floor(finalScore))
+            */
+            HighScoreText.setText("Score: " + score)
+
+            // Set Music
+            DeadSound.pause()
+        }
+        if (cursors.space.isDown && lives != 0) {
+            // Return to Checkpoint
+            bmpText.setText('')
+            player.x = checkpointX
+            player.y = checkpointY
+            hide = 1
+            gameOver = false
+            this.physics.resume()
+
+            // Set Music
+            DeadSound.pause()
+            MusicSound.play()
+        }
+        return;
+    }
+
+    player.setScale(playerSize)
+    player.setBounce(playerBounce);
+
+    // Check if Player is Touching the Ground
+    if (player.body.touching.down) {
+        // Applies Ground Friction
+        player.setVelocityX(player.body.velocity.x * friction)
+
+        // If Up Arrow if Pressed
+        if (cursors.up.isDown) {
+            JumpSound.play()
+            player.setVelocityY(-jump)
+        }
+    } else if (cursors.down.isDown && jetpackTime > 0 && player.y > 0) {
+        // Use Jetpack
+        player.setVelocityY(-jump/5)
+        jetpackTime--
+    }
+    
+    if (player.body.touching.down || player.body.touching.left || player.body.touching.right) {
+        // Applies Ground Friction
+        player.setVelocityX(player.body.velocity.x * friction)
+
+        // If Up Arrow if Pressed
+        if (cursors.up.isDown) {
+            player.setVelocityY(-jump)
+        }
+    }
+
+    // Nether Left and Right is Pressed
+    if (!cursors.left.isDown && !cursors.right.isDown) {
+        MomentumLeft = 1
+        MomentumRight = 1
+    }
+
+
+    if (cursors.left.isDown && cursors.right.isDown) {
+        // Both Left and Right is Pressed so Do Nothing
+    } else if (cursors.left.isDown) {
+        // Set Momentum
+        MomentumRight = 1
+        if (MomentumLeft < 1.5) {
+            MomentumLeft += 0.001
+        }
+
+        // Move Left
+        if (player.body.touching.down) {
+            player.setVelocityX(-speed*MomentumLeft)
+        } else {
+            player.setVelocityX(-speed/reducedSpeed*MomentumLeft)
+        }
+        player.anims.play('left');
+
+    } else if (cursors.right.isDown) {
+        // Set Momentum
+        MomentumLeft = 1
+        if (MomentumRight < 1.5) {
+            MomentumRight += 0.001
+        }
+
+        // Move Right
+        if (player.body.touching.down) {
+            player.setVelocityX(speed*MomentumRight)
+        } else {
+            player.setVelocityX(speed/reducedSpeed*MomentumRight)
+        }
+        player.anims.play('right');
+    }
+
+    if (cursors.shift.isDown) {
+        speed = 80
+        playerSize = 1
+    }
+}
+
+// Player Collides With a Spike
+function hitSpikes (player, spike) {
+    this.physics.pause();
+    gameOver = true;
+}
+
+// Player Collects a Coin
+function hitStars (player, star) {
+    CoinSound.play()
+    name = star.texture.key
+    coinValue = name.replace("coin-", "")
+    score += parseInt(coinValue)
+    star.disableBody(true, true);
+    setScore()
+}
+
+// Player has an Effect
+function hitEffects (player, effect) {
+    name = effect.texture.key
+    if (name == "jump") {
+        jump = 400
+        reducedSpeed = 1
+        setTimeout(() => {
+        reducedSpeed = 1.5
+            jump = 250  
+        },500)
+    }
+}
+
+// Player Collects a Powerup
+function collectPowerup(player, powerup) {
+    PowerupSound.play()
+    name = powerup.texture.key
+    if (name == "grow") {
+        playerSize = 1.5
+    } else if (name == "shrink") {
+        playerSize = .75
+    } else if (name == "speed") {
+        speed = 120
+    } else if (name == "life") {
+        if (lives != 3) {
+            lives++
+        } else {
+            // If Player Already has 3 Lives Award Them 10 Coins
+            score += 10
+            setScore()
+        }
+    } else if (name == "power") {
+        jetpackTime += 120
+    }
+    powerup.disableBody(true, true);
+}
+
+// Player Reaches a Checkpoint
+function hitFlag(player, flag) {
+    CheckpointSound.play();
+    flag.disableBody(true, true);
+    if (flag.x == 3089) {
+        checkpointX = player.x - 16
+        checkpointY = player.y
+        bonusText.setText('You Completed The Game; See How much longer you can Survive!')
+        lives = 3
+        speed = 80
+        playerSize = 1
+        jetpackTime = 0
+        // Award the Player 50 Coins
+        score += 50
+        endLives = lives
+        setScore()
+    } else {
+        // Award the Player 10 Coins
+        score += 10
+        setScore()
+        checkpointX = player.x + 8
+        checkpointY = player.y
+    }
+}
+
+// Update Player Score
+function setScore() {
+    scoreText.setText(score)
+    if (score > localStorage.getItem('highscore')) {
+        HighScoreText.setText("Highscore: " + score)
+        localStorage.setItem('highscore', score)
+    } else {
+        HighScoreText.setText("Highscore: " + parseInt(localStorage.getItem('highscore')))
+    }
+}
+</script>
+
+<style>
+    canvas {
+        width: calc(100% - 15px);
+        image-rendering: crisp-edges;
+        position: absolute;
+        margin-top: calc(calc(100vh - 33%) / 2);
+    }
+    body, html {
+        background-color: rgb(7, 2, 24);
+    }
+</style>
+</html>
