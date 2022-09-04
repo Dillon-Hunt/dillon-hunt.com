@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 04 Aug 2022 10:19:57 +1000</lastBuildDate><atom:link href="https://dillon-hunt.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>NewTab Pastels</title>
+      <title>NewTab Pastels | Dillon Hunt</title>
       <link>https://dillon-hunt.com/blog/newtab-pastels/</link>
       <pubDate>Thu, 04 Aug 2022 10:19:57 +1000</pubDate>
       
@@ -18,7 +18,7 @@ Features NewTab page slowly scrolls through the rainbow on each new tab. Customi
     </item>
     
     <item>
-      <title>Social Media App</title>
+      <title>Social Media App | Dillon Hunt</title>
       <link>https://dillon-hunt.com/blog/social-media-app/</link>
       <pubDate>Sun, 10 Jul 2022 19:18:08 +1000</pubDate>
       
@@ -28,7 +28,7 @@ Progress The project has the fundamental aspects of a social media platform, inc
     </item>
     
     <item>
-      <title>Platformer</title>
+      <title>Platformer | Dillon Hunt</title>
       <link>https://dillon-hunt.com/blog/educational-platformer-game/</link>
       <pubDate>Thu, 30 Jun 2022 21:26:53 +1000</pubDate>
       
@@ -38,7 +38,16 @@ Breakdown of The Task The framework which is used for this project is Phaser.js 
     </item>
     
     <item>
-      <title>NewTab</title>
+      <title>RPG Part 1 - Ideation &amp; Planning | Dillon Hunt</title>
+      <link>https://dillon-hunt.com/blog/rpg-game-devlog-part-1/</link>
+      <pubDate>Tue, 22 Feb 2022 21:01:43 +1000</pubDate>
+      
+      <guid>https://dillon-hunt.com/blog/rpg-game-devlog-part-1/</guid>
+      <description>Concept The idea for the game is to make a top down style rpg game. It is going to be built using javascript and canvas. I am not yet sure about the art style or storyline however I want it to have combat mechanics like a dungeon crawler where you equipt a weapon and need to fight enemies to progress. The game is loosely based on the Pizza Legends tutorial series by Drew Conley</description>
+    </item>
+    
+    <item>
+      <title>NewTab | Dillon Hunt</title>
       <link>https://dillon-hunt.com/blog/newtab/</link>
       <pubDate>Thu, 03 Dec 2020 09:43:36 +1000</pubDate>
       

@@ -3,7 +3,7 @@ lastmod: 2020-12-03T09:43:36+10:00
 publishdate: 2020-12-03T09:43:36+10:00
 author: Dillon Hunt
 
-title: NewTab
+title: NewTab | Dillon Hunt
 stack: JavaScript
 description: Exploring the development of the Firefox new tab extension NewTab.
 
@@ -12,7 +12,7 @@ hero_description: Exploring the development of the Firefox new tab extension New
 
 category: New Project
 date_string: Dec 3 - 2020
-image: /img/cover.png
+image: img/cover.png
 live: https://addons.mozilla.org/en-US/firefox/addon/new_tab/
 github: https://github.com/Dillon-Hunt/NewTab
 

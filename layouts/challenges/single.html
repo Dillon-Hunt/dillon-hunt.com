@@ -3,25 +3,19 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/static/css/blog/single.css">
 
-        <title>{{ .Title }}</title>
+        {{ partial "article-head.html" . }}
+        <link rel="stylesheet" href="/static/css/challenges/single.css">
+
     </head>
     <body>
         
         {{ partial "hero.html" . }}
 
         <article class="content-wrapper" itemscope itemtype="http://schema.org/Article">
-            <meta itemprop="datePublished" content="{{ .PublishDate }}" />
-            <meta itemprop="dateModified" content="{{ .Lastmod }}" />
-            <meta itemprop="image" content="{{ .Params.image }}" />
-            <meta itemprop="author" content="{{ .Params.author }}" />
-            <meta itemprop="publisher" content="dillon-hunt.com" />
 
             {{ .Content }}
+            
         </article>
 
         {{ partial "footer.html" . }}

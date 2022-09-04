@@ -3,7 +3,7 @@ lastmod: 2022-09-02T10:19:57+10:00
 publishdate: 2022-08-04T10:19:57+10:00
 author: Dillon Hunt
 
-title: NewTab Pastels
+title: NewTab Pastels | Dillon Hunt
 stack: JavaScript
 description: A fun minimalist & colorful customizable pastel themed new tab page with search bar.
 
@@ -12,7 +12,7 @@ hero_description: Redesigning the NewTab experience.
 
 category: New Project
 date_string: Aug 4 - 2022
-image: /img/cover.png
+image: img/cover.png
 live: https://addons.mozilla.org/en-US/firefox/addon/newtab-pastels/
 github: https://github.com/Dillon-Hunt/NewTab-Pastels
 

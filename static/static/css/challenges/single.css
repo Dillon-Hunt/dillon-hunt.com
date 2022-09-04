@@ -1,0 +1,27 @@
+.content-wrapper {
+    width: calc(100vw - 160px);
+    max-width: 700px;
+    margin: 80px auto;
+}
+
+.content-wrapper h1 {
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: -10px;
+}
+
+.content-wrapper p {
+    font-family: 'Rubik', sans-serif;
+    line-height: 20px;
+    line-height: 1.5;
+}
+
+.content-wrapper a {
+    color: white;
+}
+
+.content-wrapper img {
+    width: 100%;
+    border-radius: 5px;
+    margin: auto 0;
+    object-fit: cover;
+}

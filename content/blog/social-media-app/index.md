@@ -3,7 +3,7 @@ lastmod: 2022-09-02T19:18:08+10:00
 publishdate: 2022-07-10T19:18:08+10:00
 author: Dillon Hunt
 
-title: Social Media App
+title: Social Media App | Dillon Hunt
 stack: React
 description: A social media app made with react and firebase to create and share with friends and communities.
 
@@ -12,7 +12,7 @@ hero_description: A React + firebase social media platform.
 
 category: New Project
 date_string: Jul 20 - 2022
-image: /img/cover.png
+image: img/cover.png
 live: https://social-media-app-fcc1f.web.app
 github: https://github.com/Dillon-Hunt/social-media-platform
 
