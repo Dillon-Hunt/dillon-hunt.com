@@ -24,8 +24,9 @@
                         </div>
 
                         {{ $imageURL := print .RelPermalink .Params.image }}
-                        
+
                         {{ $image := .Page.Resources.GetMatch .Params.image }}
+
                         {{ $image200 := $image.Resize "200x" }}
                         {{ $image400 := $image.Resize "400x" }}
                         {{ $image600 := $image.Resize "600x" }}

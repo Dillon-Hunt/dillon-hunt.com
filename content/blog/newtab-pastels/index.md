@@ -20,7 +20,7 @@ draft: false
 ---
 
 # What is NewTab Pastels?
-![NewTab Pastels](./img/cover.png)
+{{< img src="img/cover.png" alt="NewTab Pastels" >}}
 NewTab Pastels is a fun minimalist & colorful customizable pastel themed new tab page with search bar. Inspired by the original [NewTab](../newtab/), NewTab Pastels was designed to me a more minimal version, while still allowing for a great amount of customization and features.
 
 # Features
@@ -31,5 +31,5 @@ NewTab Pastels is a fun minimalist & colorful customizable pastel themed new tab
 - Dynamically adjust you browser theme to match you current color (optional).
 
 # Design
-![NewTab Pastels Customization](./img/customization.png)
+{{< img src="img/customization.png" alt="NewTab Pastels Customization" >}}
 NewTab Pastels has a sleek minimal design with two bars that pop out from the sides of the screen when you hover your mouse near them. The left dock allows you to change the background color while the right allows you to toggle various features. You are also able to add bookmarks for sites you frequently visit.

@@ -26,6 +26,6 @@ The social media app was designed to combine the key experience of Instagram wit
 The [project](https://social-media-app-fcc1f.web.app) has the fundamental aspects of a social media platform, including authentication, posting, linking and following however key features such as commenting and communities are still missing.
 
 # Figma Designs
-![Designs](./img/designs-1.png)
+{{< img src="img/designs-1.png" alt="Designs" >}}
 
-![Designs](./img/designs-2.png)
+{{< img src="img/designs-2.png" alt="Designs" >}}

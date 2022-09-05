@@ -19,9 +19,9 @@ github: https://github.com/Dillon-Hunt/NewTab
 draft: false
 ---
 
-![NewTab Page](./img/cover.png)
-
 # Project Idea
+{{< img src="img/cover.png" alt="NewTab Page" caption="NewTab - Firefox New Tab Page" >}}
+
 The idea of NewTab was to create a free web extension to allow users to have a customizable new tab page that was hard to find with similar products. The entire project is based on customizability and simplicity.
 
 # An Add-on For Everyone
@@ -33,9 +33,8 @@ NewTab Add-on has customizable widgets including stats, notes and an app creator
 # Custom Offline Backgrounds:
 NewTab allows you to use one of our pre-installed backgrounds or use the image URL of any image, supporting PNG, SVG, JPG, GIF, WEBP and more.
 
-![NewTab Customization](./img/customization.png)
-
 # Themes & Customization:
+{{< img src="img/customization.png" alt="NewTab Customization" >}}
 Try one of 3 NewTab themes and customize everything from app shape, custom app icons, style, widget theme, display style and more customization to come!
 
 # Search Faster

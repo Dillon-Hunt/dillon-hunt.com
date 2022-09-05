@@ -25,18 +25,18 @@ The task for the platformer game was to create a fun and educational platformer 
 The framework which is used for this project is Phaser.js which means this will be a web based JavaScript using canvas. Since the game is to be used in schools obviously there will be no or minimal violence and it needs to be quite easy to pick up and play. As for the learning objective of the game I chose a geography theme with a fun landmark backgrounds for each part of the platformer. Since it is more of a quick pickup and play game, I chose not to have levels but instead a single map that could later be turned into a endless generation map.
 
 # Story
-![Story](./img/story.png)
+{{< img src="img/story.png" alt="story" >}}
 The player is exploring the world we live in by passing through different countries and visiting famous landmarks along the way. As the player progresses the game becomes harder creating stress so that the player feels a greater sense of achievement when they complete the game.
 
 # Learning Objective
-![Story](./img/learning.png)
+{{< img src="img/learning.png" alt="Learning" >}}
 This game aims to teach the lower primary group about the countries, flags and landmarks of the world through a fun and interactive platformer game. The game also helps to develop their patience and ability to cope with stress in a fun and engaging environment.
 
 # Goal
 The goal of the game is to reach the end of the platformer which is slowly increasing in difficulty while collecting as many coins as possible to achieve the maximum possible score.
 
 # Enemy
-![Story](./img/enemy.png)
+{{< img src="img/enemy.png" alt="enemy" >}}
 Instead of a traditional moving enemy, I chose to simply add in some challenges like spikes and tough jumps to put pressure on the player and keep them engaged with the game as it gives them the sense that they have reached a point and can't give up.
 Bonus
 

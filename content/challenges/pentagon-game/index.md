@@ -21,4 +21,4 @@ draft: false
 Create a pentagon tile based strategy game involving a constant energy supply to advanced forward.
 
 # Final Solution
-![Pentagon Game](./img/cover-full.png)
+{{< img src="img/cover-full.png" alt="Pentagon Game" caption="Example of completed challenge." >}}

@@ -35,7 +35,7 @@ The game is loosely based on the Pizza Legends tutorial series by <a href='https
 In order to develop an idea, I like to browse other similar projects and draw ideas from them, thinking about what features I could use in my game or could improve on, as well as what elements to avoid.
 
 ## Littlewood
-![Screenshot from Littlewood.](./img/littlewood.jpg)
+{{< img src="img/littlewood.jpg" alt="Screenshot from Littlewood" >}}
 
 I quite liked the very simple and flat game art from [Littlewood](https://store.steampowered.com/app/894940/Littlewood/), although the speech popup was way too obtrusive.
 While the style might be a little too simple for the game I want to create, a tile based demo version could be useful to cut down the initial development time.
@@ -48,13 +48,13 @@ I loved the art style and animations from [Spindle](https://store.steampowered.c
 
 ## Moonlighter
 <!-- ![Screenshot from Moonlighter.](./img/moonlighter.jpg) -->
-![Screenshot from Moonlighter.](./img/moonlighter-2.jpg)
+{{< img src="img/moonlighter-2.jpg" alt="Screenshot from Moonlighter" >}}
 
 While the art from [Moonlighter](https://store.steampowered.com/app/606150/Moonlighter/) is pretty good, I especially liked it's crafting and inventory system. 
 I would like to implement some sort of crafting or upgrade system similar to this for tools and other items.
 
 ## Garden Story</h3>
-![Screenshot from Garden Story.Screenshot from Garden Story.](./img/garden-story.png)
+{{< img src="img/garden-story.png" alt="Screenshot from Garden Story" >}}
 
 I was interested in the flat, colorful art implemented in [Garden Story](https://store.steampowered.com/app/1062140/Garden_Story/). I quite liked the idea of a backpack however I thought the screen was a little bit busy. The fishing game mechanic seemed fun as well, I also noticed it in Spindle, so that could be something to add.
 
