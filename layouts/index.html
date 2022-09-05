@@ -5,7 +5,7 @@
     {{ partial "regular-head.html" . }}
     <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="/static/css/home.css">
-    
+
 </head>
 <body>
     
@@ -32,7 +32,33 @@
         {{ range where .Pages "Params.link" "/blog" }}
             {{ range where .Pages "Params.category" "New Project" }}
                 <article class="project">
-                    <img src="{{ print .Permalink .Params.image }}" alt="{{ .Title }}">
+
+                    {{ $imageURL := print .RelPermalink .Params.image }}
+
+                    {{ $image := .Page.Resources.GetMatch .Params.image }}
+                    {{ $image200 := $image.Resize "200x" }}
+                    {{ $image400 := $image.Resize "400x" }}
+                    {{ $image600 := $image.Resize "600x" }}
+                    {{ $image800 := $image.Resize "800x" }}
+
+                    <img 
+                        srcset="
+                            {{ $image200.RelPermalink }} 200w,
+                            {{ $image800.RelPermalink }} 400w,
+                            {{ $image600.RelPermalink }} 600w,
+                            {{ $image800.RelPermalink }} 800w,
+                            {{ $image.RelPermalink }} 1000w"
+                        sizes="
+                            (max-width: 400px) 200px,
+                            (max-width: 800px) 400px,
+                            (max-width: 1200px) 600px,
+                            (max-width: 1600px) 800px,
+                            1000px"
+                        src="{{ $imageURL }}"
+                        alt="{{ .Title }}" 
+                    />
+
+
                     <div class="content-wrapper">
                         <p class="project-flag">PROJECT</p>
                         <h2 class="project-name">{{ .Title }}</h2>

@@ -20,7 +20,11 @@
                         {{ .Description | truncate 250 }}
                         <p>{{ .Params.date_string }}</p>
                     </div>
-                    <img class="image" src="{{ print .RelPermalink .Params.image }}" alt="{{ .Title }}">
+
+                    {{ $image := .Page.Resources.GetMatch .Params.image }}
+                    {{ $image250 := $image.Resize "500x300" }}
+
+                    <img class="image" src="{{ $image250.RelPermalink }}" alt="{{ .Title }}">
                 </a>
             </article>
         {{ end }}
