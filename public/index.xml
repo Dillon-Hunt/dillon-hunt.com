@@ -14,16 +14,17 @@
       
       <guid>https://dillon-hunt.com/challenges/pentagon-game/</guid>
       <description>Challenge #2 Create a pentagon tile based strategy game involving a constant energy supply to advanced forward.
-Final Solution </description>
+Final Solution Example of completed challenge. </description>
     </item>
     
     <item>
       <title>Logic Gates | Dillon Hunt</title>
       <link>https://dillon-hunt.com/challenges/logic-gates/</link>
-      <pubDate>Fri, 02 Sep 2022 18:13:32 +1000</pubDate>
+      <pubDate>Thu, 25 Aug 2022 18:13:32 +1000</pubDate>
       
       <guid>https://dillon-hunt.com/challenges/logic-gates/</guid>
-      <description>Challenge #1 Create a logic gate simulation that takes inputs and produces an output base on the configuration of logic gates.</description>
+      <description>Challenge #1 Create a logic gate simulation that takes inputs and produces an output base on the configuration of logic gates.
+Final Solution Example of completed challenge. </description>
     </item>
     
     <item>
@@ -71,7 +72,7 @@ Breakdown of The Task The framework which is used for this project is Phaser.js 
       <pubDate>Thu, 03 Dec 2020 09:43:36 +1000</pubDate>
       
       <guid>https://dillon-hunt.com/blog/newtab/</guid>
-      <description>Project Idea The idea of NewTab was to create a free web extension to allow users to have a customizable new tab page that was hard to find with similar products. The entire project is based on customizability and simplicity.
+      <description>Project Idea NewTab - Firefox New Tab Page The idea of NewTab was to create a free web extension to allow users to have a customizable new tab page that was hard to find with similar products. The entire project is based on customizability and simplicity.
 An Add-on For Everyone NewTab is an all in one New Tab Add-on for every Firefox user. With heaps features such as autocomplete, notes, to do list, stats customization and more.</description>
     </item>
     

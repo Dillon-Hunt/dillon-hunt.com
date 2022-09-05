@@ -3,10 +3,13 @@
 {{ $image400 := $image.Resize "400x" }}
 {{ $image600 := $image.Resize "600x" }}
 {{ $image800 := $image.Resize "800x" }}
-
+    
 <p>
     <figure>
+
         <img 
+            loading="lazy"
+            
             srcset="
                 {{ $image200.RelPermalink }} 200w,
                 {{ $image800.RelPermalink }} 400w,
