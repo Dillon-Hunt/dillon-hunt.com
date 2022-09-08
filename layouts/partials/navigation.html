@@ -3,7 +3,7 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-link" selected='{{ if eq "/" .Page.Params.link }}true{{ end }}' href="/">Home</a>
+        <a class="nav-link" {{ if eq "/" .Page.Params.link }} selected='true' {{ end }} href="/">Home</a>
         <a class="nav-link" selected='{{ if eq "/blog" .Page.Params.link }}true{{ end }}' href="/blog">Blog</a>
         <a class="nav-link" selected='{{ if eq "/challenges" .Page.Params.link }}true{{ end }}' href="/challenges">Challenges</a>
     </nav>    
