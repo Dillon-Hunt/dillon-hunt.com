@@ -4,6 +4,7 @@ publishdate: 2020-12-03T09:43:36+10:00
 author: Dillon Hunt
 
 title: NewTab | Dillon Hunt
+project_name: NewTab
 stack: JavaScript
 description: Exploring the development of the Firefox new tab extension NewTab.
 

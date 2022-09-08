@@ -4,6 +4,7 @@
     position: relative;
     box-sizing: border-box;
     background-color: #6B5AED;
+    overflow-x: clip;
 }
 
 .contact-form {

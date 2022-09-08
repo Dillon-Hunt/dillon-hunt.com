@@ -4,6 +4,7 @@ publishdate: 2022-07-10T19:18:08+10:00
 author: Dillon Hunt
 
 title: Social Media App | Dillon Hunt
+project_name: Social Media App
 stack: React
 description: A social media app made with react and firebase to create and share with friends and communities.
 

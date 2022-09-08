@@ -4,6 +4,7 @@ publishdate: 2022-08-04T10:19:57+10:00
 author: Dillon Hunt
 
 title: NewTab Pastels | Dillon Hunt
+project_name: NewTab Pastels
 stack: JavaScript
 description: A fun minimalist & colorful customizable pastel themed new tab page with search bar.
 

@@ -61,8 +61,8 @@
 
                     <div class="content-wrapper">
                         <p class="project-flag">PROJECT</p>
-                        <h2 class="project-name">{{ .Title }}</h2>
-                        <p class="project-stack">{{ .Params.Stack }}</p>
+                        <h2 class="project-name">{{ .Params.project_name }}</h2>
+                        <p class="project-stack">{{ .Params.stack }}</p>
                         <p class="project-description">{{ .Description }}</p>
                         <div class="project-links">
                             <a href="{{ .Permalink }}">Blog Post</a>
@@ -82,5 +82,46 @@
     </section>
 
     {{ partial "footer.html" . }}
+
+    <script>
+
+        document.querySelectorAll('.section-title').forEach((el) => {
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!entry.target.classList.contains('visible-heading')) {
+                            window.innerWidth > 1000 ? 
+                            entry.target.style.marginLeft = '80px':
+                            entry.target.style.marginLeft = '40px'
+                        }
+                        entry.target.classList.add('visible-heading')
+                        observer.unobserve(entry.target)
+                    }
+                })
+            })
+
+            observer.observe(el)
+        });
+
+        document.querySelector('body').onscroll = () => {
+            projects = document.querySelectorAll('.project .content-wrapper') ?? []
+
+            window.innerWidth > 1000 ? 
+            projects.forEach(project => {
+                project.style.marginTop = `${ (project.getClientRects()[0].y - (window.innerHeight  / 2) + (project.getClientRects()[0].height / 2)) / 2 }px`
+            }) : projects.forEach(project => {
+                project.style.marginTop = '-4px'
+            })
+        }
+
+        (() => {
+            const visible = document.querySelectorAll('.visible-project') ?? []
+            visible.forEach((el) => {
+                const y = el.style.getPropertyValue('--y')
+                const height = el.style.getPropertyValue('--height')
+                el.style.transform = `translateY(${(y - window.scrollY + height) / 5}px)`
+            })
+        })();
+    </script>
 </body>
 </html>

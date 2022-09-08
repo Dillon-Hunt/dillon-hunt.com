@@ -4,6 +4,7 @@ publishdate: 2022-06-30T21:26:53+10:00
 author: Dillon Hunt
 
 title: Platformer | Dillon Hunt
+project_name: Platformer
 stack: Phaser.js
 description: This project was designed to create a fun platformer game to be used in the classroom with youn students to teach them about geographical landmarks, countries and flags, whilst also being enjoyable and jun to play.
 
