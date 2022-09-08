@@ -89,11 +89,6 @@
             let observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        if (!entry.target.classList.contains('visible-heading')) {
-                            window.innerWidth > 1000 ? 
-                            entry.target.style.marginLeft = '80px':
-                            entry.target.style.marginLeft = '40px'
-                        }
                         entry.target.classList.add('visible-heading')
                         observer.unobserve(entry.target)
                     }
@@ -114,14 +109,16 @@
             })
         }
 
-        (() => {
+        function update {
             const visible = document.querySelectorAll('.visible-project') ?? []
             visible.forEach((el) => {
                 const y = el.style.getPropertyValue('--y')
                 const height = el.style.getPropertyValue('--height')
                 el.style.transform = `translateY(${(y - window.scrollY + height) / 5}px)`
             })
-        })();
+        }
+        
+        update()
     </script>
 </body>
 </html>

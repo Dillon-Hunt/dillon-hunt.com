@@ -5,6 +5,10 @@
     transition: margin 0.5s ease;
 }
 
+.section-title.visible-heading {
+    margin-left: 80px;
+}
+
 .email {
     cursor: pointer;
 }
@@ -137,6 +141,10 @@
 @media screen and (max-width: 1000px) {
     .section-title {
         margin: 40px 40px 20px -100%;
+    }
+
+    .section-title.visible-heading {
+        margin-left: 40px;
     }
 
     .projects {
