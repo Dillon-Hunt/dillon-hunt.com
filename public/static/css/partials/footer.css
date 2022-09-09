@@ -4,10 +4,13 @@
     position: relative;
     box-sizing: border-box;
     background-color: #6B5AED;
+    overflow-x: clip;
 }
 
 .contact-form {
     width: 400px;
+    max-width: 100%;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
 }
@@ -27,6 +30,7 @@
     resize: none;
     height: 200px !important;
     width: 400px !important;
+    max-width: 100%;
 }
 
 .contact-form-submit {
@@ -57,4 +61,10 @@
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
+}
+
+@media screen and (max-width: 1000px) {
+    .footer {
+        padding: 40px;
+    }
 }

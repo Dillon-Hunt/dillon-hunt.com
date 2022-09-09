@@ -15,6 +15,10 @@
     <h2 class="section-title">ABOUT ME</h2>
 
     <section class="about">
+        <div class="avatar">
+            <img src="./img/avatar.png" alt="Avatar">
+        </div>
+       
         <p>
             My name is Dillon Hunt, I am high-school student and I love programming. I like to create small websites & games in my spare time to improve my skills. I mainly focus on frontend development but I am trying to build my experience in full stack programming as well as getting used to frameworks like React JS. 
             <br />
@@ -41,7 +45,7 @@
                     {{ $image600 := $image.Resize "600x" }}
                     {{ $image800 := $image.Resize "800x" }}
 
-                    <img 
+                    <a href="{{ .Permalink }}" class="image-link"><img 
                         srcset="
                             {{ $image200.RelPermalink }} 200w,
                             {{ $image800.RelPermalink }} 400w,
@@ -56,7 +60,7 @@
                             1000px"
                         src="{{ $imageURL }}"
                         alt="{{ .Title }}" 
-                    />
+                    /></a>
 
 
                     <div class="content-wrapper">
@@ -65,14 +69,14 @@
                         <p class="project-stack">{{ .Params.stack }}</p>
                         <p class="project-description">{{ .Description }}</p>
                         <div class="project-links">
-                            <a href="{{ .Permalink }}">Blog Post</a>
+                            <a href="{{ .Permalink }}" class="link">Blog Post</a>
 
                             {{ if .Params.live }}
-                                <a href="{{ .Params.live }}" target="_Blank">See Project</a>
+                                <a href="{{ .Params.live }}" class="link" target="_Blank">See Project</a>
                             {{ end }}
 
                             {{ if .Params.github }}
-                                <a href="{{ .Params.github }}" target="_Blank">Github</a>
+                                <a href="{{ .Params.github }}" class="link" target="_Blank">Github</a>
                             {{ end }}
                         </div>
                     </div>
