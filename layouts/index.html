@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {{ partial "regular-head.html" . }}
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+
+</head>
+<body>
+    
+    {{ partial "hero.html" . }}
+
+
+    <h2 class="section-title">ABOUT ME</h2>
+
+    <section class="about">
+        <div class="avatar">
+            <img src="./img/avatar.png" alt="Avatar">
+        </div>
+       
+        <p>
+            My name is Dillon Hunt, I am high-school student and I love programming. I like to create small websites & games in my spare time to improve my skills. I mainly focus on frontend development but I am trying to build my experience in full stack programming as well as getting used to frameworks like React JS. 
+            <br />
+            <br />
+            On this website you can find all my projects below and I also have a blog and challenges page to check out. The blog page details all my projects as well as project updates and anything else programming related. The challenges page is an expanding list of small challenges I have tried to complete, feel free to give one of them a go if you like.
+            <br />
+            <br />
+            If you would like to contact me you can do so by sending me an email using the form provided below or email me directly at <strong class="email" onclick="window.location.href = 'mailto:admin@dillon-hunt.com'">admin@dillon-hunt.com</strong>.
+        </p>
+    </section>
+
+    <h2 class="section-title">PROJECTS</h2>
+
+    <section class="projects">
+        {{ range where .Pages "Params.link" "/blog" }}
+            {{ range where .Pages "Params.category" "New Project" }}
+                <article class="project">
+
+                    {{ $imageURL := print .RelPermalink .Params.image }}
+
+                    {{ $image := .Page.Resources.GetMatch .Params.image }}
+                    {{ $image200 := $image.Resize "200x" }}
+                    {{ $image400 := $image.Resize "400x" }}
+                    {{ $image600 := $image.Resize "600x" }}
+                    {{ $image800 := $image.Resize "800x" }}
+
+                    <a href="{{ .Permalink }}" class="image-link"><img 
+                        srcset="
+                            {{ $image200.RelPermalink }} 200w,
+                            {{ $image800.RelPermalink }} 400w,
+                            {{ $image600.RelPermalink }} 600w,
+                            {{ $image800.RelPermalink }} 800w,
+                            {{ $image.RelPermalink }} 1000w"
+                        sizes="
+                            (max-width: 400px) 200px,
+                            (max-width: 800px) 400px,
+                            (max-width: 1200px) 600px,
+                            (max-width: 1600px) 800px,
+                            1000px"
+                        src="{{ $imageURL }}"
+                        alt="{{ .Title }}" 
+                    /></a>
+
+
+                    <div class="content-wrapper">
+                        <p class="project-flag">PROJECT</p>
+                        <h2 class="project-name">{{ .Params.project_name }}</h2>
+                        <p class="project-stack">{{ .Params.stack }}</p>
+                        <p class="project-description">{{ .Description }}</p>
+                        <div class="project-links">
+                            <a href="{{ .Permalink }}" class="link">Blog Post</a>
+
+                            {{ if .Params.live }}
+                                <a href="{{ .Params.live }}" class="link" target="_Blank">See Project</a>
+                            {{ end }}
+
+                            {{ if .Params.github }}
+                                <a href="{{ .Params.github }}" class="link" target="_Blank">Github</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </article>
+            {{ end }}
+        {{ end }}
+    </section>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+
+        document.querySelectorAll('.section-title').forEach((el) => {
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible-heading')
+                        observer.unobserve(entry.target)
+                    }
+                })
+            })
+
+            observer.observe(el)
+        });
+
+        document.querySelector('body').onscroll = () => {
+            projects = document.querySelectorAll('.project .content-wrapper') ?? []
+
+            window.innerWidth > 1000 ? 
+            projects.forEach(project => {
+                project.style.marginTop = `${ (project.getClientRects()[0].y - (window.innerHeight  / 2) + (project.getClientRects()[0].height / 2)) / 2 }px`
+            }) : projects.forEach(project => {
+                project.style.marginTop = '-4px'
+            })
+        }
+
+        function update() {
+            const visible = document.querySelectorAll('.visible-project') ?? []
+            visible.forEach((el) => {
+                const y = el.style.getPropertyValue('--y')
+                const height = el.style.getPropertyValue('--height')
+                el.style.transform = `translateY(${(y - window.scrollY + height) / 5}px)`
+            })
+        }
+        
+        update()
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{{ define "main" }}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+        {{ partial "article-head.html" . }}
+
+        <link rel="stylesheet" href="/static/css/blog/single.css">
+
+    <body>
+        
+        {{ partial "hero.html" . }}
+
+        <article class="content-wrapper" itemscope itemtype="http://schema.org/Article">
+
+            {{ .Content }}
+        </article>
+
+        {{ partial "footer.html" . }}
+    </body>
+    </html>
+
+{{ end }}

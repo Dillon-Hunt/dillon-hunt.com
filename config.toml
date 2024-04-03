@@ -1,0 +1,13 @@
+baseURL = 'https://dillon-hunt.com/'
+languageCode = 'en-us'
+title = 'Dillon Hunt'
+
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[markup]
+    [markup.highlight]
+        lineNoStart = 1
+        lineNos = true
+        tabWidth = 4
+

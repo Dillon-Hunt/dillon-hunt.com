@@ -1,0 +1,52 @@
+.nav, .brand-nav  {
+    width: 100%;
+    height: 100px;
+    padding: 40px;
+    gap: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.brand-nav {
+    width: auto;
+    justify-content: start;
+}
+
+.nav-link, .brand {
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.brand {
+    padding: 5px;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.nav-link {
+    width: 75px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.nav-link[selected = true] {
+    color: #4e41b4;
+    background-color: white;
+}
+
+.nav-link:not(.selected):not([selected = true]):hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 800px) {
+    .nav {
+        display: none;
+    }
+}

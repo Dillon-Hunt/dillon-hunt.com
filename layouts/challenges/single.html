@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+
+        {{ partial "article-head.html" . }}
+        <link rel="stylesheet" href="/static/css/challenges/single.css">
+
+    </head>
+    <body>
+        
+        {{ partial "hero.html" . }}
+
+        <article class="content-wrapper" itemscope itemtype="http://schema.org/Article">
+
+            {{ .Content }}
+            
+        </article>
+
+        {{ partial "footer.html" . }}
+    </body>
+    </html>
+
+{{ end }}

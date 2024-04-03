@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+        {{ partial "regular-head.html" . }}
+        <link rel="stylesheet" href="/static/css/blog/list.css">
+
+    <body>
+
+        {{ partial "hero.html" . }}
+
+        <section class="post-list">
+        {{ range .Pages }}
+            <article class="post-wrapper">
+                <a class="post" href="{{ .RelPermalink }}">
+                    <div class="content-wrapper">
+                        <p>{{ .Params.category }} - {{ .ReadingTime }} min read</p>
+                        <h2>{{ .Title }}</h2>
+                        {{ .Description | truncate 250 }}
+                        <p>{{ .Params.date_string }}</p>
+                    </div>
+
+                    {{ $image := .Page.Resources.GetMatch .Params.image }}
+                    {{ $image250 := $image.Resize "500x300" }}
+
+                    <img class="image" src="{{ $image250.RelPermalink }}" alt="{{ .Title }}">
+                </a>
+            </article>
+        {{ end }}
+        </section>
+
+        {{ partial "footer.html" . }}
+    </body>
+    </html>
+
+{{ end }}

@@ -1,0 +1,159 @@
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&family=Rubik&display=swap" rel="stylesheet"> 
+
+<link rel="icon" href="/static/icons/favicon.ico">
+
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/syntax.css">
+
+<meta name="description" content="A pentagon tile based two play player strategy game involving each player attempting to reach the other players power source before their own is reached.">
+
+<meta itemprop="datePublished" content="2022-09-02 19:10:32 &#43;1000 AEST" />
+<meta itemprop="dateModified" content="2022-09-02 19:10:32 &#43;1000 AEST" />
+<meta itemprop="image" content="https://dillon-hunt.com/challenges/pentagon-game/img/cover.png"/>
+<meta itemprop="author" content="Dillon Hunt" />
+<meta itemprop="description" content="A pentagon tile based two play player strategy game involving each player attempting to reach the other players power source before their own is reached." />
+<meta itemprop="publisher" content="dillon-hunt.com" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pentagon Game | Dillon Hunt" />
+<meta name="twitter:description" content="A pentagon tile based two play player strategy game involving each player attempting to reach the other players power source before their own is reached." />
+<meta name="twitter:image" content="https://dillon-hunt.com/challenges/pentagon-game/img/cover.png" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Pentagon Game | Dillon Hunt" />
+<meta property="og:description" content="A pentagon tile based two play player strategy game involving each player attempting to reach the other players power source before their own is reached." />
+<meta property="og:url" content="https://dillon-hunt.com/challenges/pentagon-game/" />
+<meta property="og:image" content="https://dillon-hunt.com/challenges/pentagon-game/img/cover.png" />
+
+<title>Pentagon Game | Dillon Hunt</title>
+        <link rel="stylesheet" href="/static/css/challenges/single.css">
+
+    </head>
+    <body>
+        
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/hero.css">
+</head>
+<body>
+
+    <head>
+    <link rel="stylesheet" href="/static/css/partials/navigation.css">
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-link"  href="/">Home</a>
+        <a class="nav-link"  href="/blog">Blog</a>
+        <a class="nav-link"  href="/challenges">Challenges</a>
+    </nav>    
+
+    <nav class="brand-nav">
+        <a class="brand"  href="/">DILLON HUNT</a>
+    </nav>
+</body>
+
+
+    <section class="hero">
+        <h1 class="title">Pentagon Strategy Game</h1>
+        <p class="subtitle">A challenge in non-rectangular grid based computing.</p>
+    </section>    
+    
+</body>
+
+
+        <article class="content-wrapper" itemscope itemtype="http://schema.org/Article">
+
+            <h1 id="challenge-2">Challenge #2</h1>
+<p>Create a pentagon tile based strategy game involving a constant energy supply to advanced forward.</p>
+<h1 id="final-solution">Final Solution</h1>
+
+
+
+
+
+    
+<p>
+    <figure>
+
+        <img 
+            loading="lazy"
+            
+            srcset="
+                /challenges/pentagon-game/img/cover-full_huec44f6eeea0e79c8092c8fb79ba71940_206643_200x0_resize_box_3.png 200w,
+                /challenges/pentagon-game/img/cover-full_huec44f6eeea0e79c8092c8fb79ba71940_206643_800x0_resize_box_3.png 400w,
+                /challenges/pentagon-game/img/cover-full_huec44f6eeea0e79c8092c8fb79ba71940_206643_600x0_resize_box_3.png 600w,
+                /challenges/pentagon-game/img/cover-full_huec44f6eeea0e79c8092c8fb79ba71940_206643_800x0_resize_box_3.png 800w,
+                /challenges/pentagon-game/img/cover-full.png 1000w"
+            sizes="
+                (max-width: 400px) 200px,
+                (max-width: 800px) 400px,
+                (max-width: 1200px) 600px,
+                (max-width: 1600px) 800px,
+                1000px"
+            src="https://dillon-hunt.com/challenges/pentagon-game/img/cover-full.png"
+
+             
+
+                alt="Pentagon Game" 
+
+            }
+        />
+
+        
+
+            <figcaption style="font-style: italic">Example of completed challenge.</figcaption>
+
+        
+    </figure>
+</p>
+
+            
+        </article>
+
+        <head>
+    <link rel="stylesheet" href="/static/css/partials/footer.css">
+</head>
+<body>
+    <section class="footer">
+        <form class="contact-form">
+            <h2>CONTACT</h2>
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="text" name="subject" placeholder="Subject" required />
+            <textarea placeholder="Message" name="body" required></textarea>
+            <button class="contact-form-submit" type="submit">Send Message</button>
+        </form>
+        <p class="©">© Dillon Hunt 2022</p>
+    </section>    
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            const data = {
+                name: formData.get('name'),
+                subject: formData.get('subject'),
+                body: formData.get('body')
+            };  
+
+            window.location.href = `mailto:admin@dillon-hunt.com?subject=${data.name} - ${data.subject}&body=${data.body.replaceAll('\n', '%0A')}`
+
+            document.querySelector('.contact-form').reset() 
+        })
+    </script>
+</body>
+    </body>
+    </html>
+

@@ -1,0 +1,13 @@
+<head>
+    <link rel="stylesheet" href="/static/css/partials/hero.css">
+</head>
+<body>
+
+    {{ partial "navigation.html" . }}
+
+    <section class="hero">
+        <h1 class="title">{{ .Params.hero_title }}</h1>
+        <p class="subtitle">{{ .Params.hero_description }}</p>
+    </section>    
+    
+</body>
